@@ -1,11 +1,11 @@
 <template>
-<div>
-  <figure>
-    <img :src="item.imgPath" alt="">
-    <figcaption>{{ item.caption }}</figcaption>
-    <figcaption>{{ item.price }}</figcaption>
-  </figure>
-</div>
+  <div>
+    <figure>
+      <img :src="item.imgPath" alt="">
+      <figcaption>{{ item.caption }}</figcaption>
+      <figcaption>{{ item.price }}</figcaption>
+    </figure>
+  </div>
 </template>
 
 <style lang="scss">

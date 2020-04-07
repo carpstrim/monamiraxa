@@ -33,7 +33,6 @@
 
       <v-toolbar-title v-text="title" />
       <v-spacer />
-
     </v-app-bar>
     <v-content>
       <v-container>
