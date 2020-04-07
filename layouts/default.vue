@@ -31,7 +31,7 @@
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
-      <v-toolbar-title v-text="title" class="u-font-kalam"/>
+      <v-toolbar-title class="u-font-kalam" v-text="title" />
       <v-spacer />
     </v-app-bar>
     <v-content>

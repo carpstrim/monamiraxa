@@ -25,11 +25,13 @@ figure {
 </style>
 
 <script>
+import imgPath from '~/assets/img/dummy_square.png'
+
 export default {
   data () {
     return {
       item: {
-        imgPath: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+        imgPath,
         caption: 'ユニコーンのもくもくスタイ',
         price: '1200'
       }
