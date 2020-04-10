@@ -1,0 +1,174 @@
+// CSS3 Easing
+$linear: cubic-bezier(0.25, 0.25, 0.75, 0.75) !default;
+$ease: cubic-bezier(0.25, 0.1, 0.25, 1) !default;
+$ease-in: cubic-bezier(0.42, 0, 1, 1) !default;
+$ease-out: cubic-bezier(0, 0, 0.58, 1) !default;
+$ease-in-out: cubic-bezier(0.42, 0, 0.58, 1) !default;
+$easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
+$easeInCubic: cubic-bezier(0.55, 0.055, 0.675, 0.19) !default;
+$easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22) !default;
+$easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06) !default;
+$easeInSine: cubic-bezier(0.47, 0, 0.745, 0.715) !default;
+$easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035) !default;
+$easeInCirc: cubic-bezier(0.6, 0.04, 0.98, 0.335) !default;
+$easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045) !default;
+$easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94) !default;
+$easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1) !default;
+$easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1) !default;
+$easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1) !default;
+$easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1) !default;
+$easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1) !default;
+$easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1) !default;
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275) !default;
+$easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955) !default;
+$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1) !default;
+$easeInOutQuart: cubic-bezier(0.77, 0, 0.275, 1) !default;
+$easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1) !default;
+$easeInOutSine: cubic-bezier(0.445, 0.05, 0.55, 0.95) !default;
+$easeInOutExpo: cubic-bezier(1, 0, 0, 1) !default;
+$easeInOutCirc: cubic-bezier(0.785, 0.135, 0.15, 0.86) !default;
+$easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55) !default;
+
+$zindex-overlay: 1000 !default;
+$zindex-tooltip: 1001 !default;
+$zindex-carousel: 1002 !default;
+$zindex-dropdown: 1003 !default;
+$zindex-sticky: 1004 !default;
+$zindex-drawer: 1005 !default;
+$zindex-modal: 1006 !default;
+$zindex-loader: 1007 !default;
+
+// Color Management
+$color-white: #fff !default;
+$color-offwhite: #f4f6fa !default;
+$color-gray: #ddd !default;
+$color-pink: #ffa5b0 !default;
+$color-pink-light: #fec5cc !default;
+$color-pink-xlight: #fad3d3 !default;
+$color-framboise: #fb637e !default;
+$color-framboise-light: #ff8091 !default;
+$color-vanilla: #f4e5de !default;
+$color-vanilla-dark: #e6d5ce !default;
+$color-brown: #4e3629 !default;
+$color-mint-light: #b7dde2 !default;
+$color-blue-light: #abbde3 !default;
+$color-green: #4eb691 !default;
+
+// Breakpoint
+$breakpoints: (
+  sm: 0,
+  md: 768px,
+  lg: 1200px,
+  xl: 1920px
+) !default;
+
+$root-font-sizes: (
+  sm: 2.6666667vw,
+  md: 10px,
+  lg: 10px
+) !default;
+
+// Base
+$base-bg-color: $color-white !default;
+$base-font-family: YuGothic, "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo,
+  sans-serif !default;
+$base-font-color: $color-brown !default;
+$base-line-height: 1.6875 !default;
+$base-font-sizes: (
+  sm: 1.2rem,
+  md: 1.4rem,
+  lg: 1.4rem
+) !default;
+$base-transition-duration: 0.75s;
+$base-transition-easing: ease;
+
+// Header
+$header-triangle-bg-color: $color-framboise-light;
+
+// Drawer
+$drawer-color: $color-white;
+
+// Footer
+$footer-bg-color: $color-vanilla;
+
+// Button
+$atcosmebtn-hover-bg-color: $color-green;
+
+// Card
+$card-bg-color: $color-white;
+$productcard-bg-color: $color-white;
+
+// Carousel
+$carousel-bullet-bg-color: $color-vanilla-dark;
+$carousel-bullet-active-bg-color: $color-framboise;
+$carousel-transition-easing: $ease-out;
+
+// Loader
+$loader-bg-color: $color-white;
+
+// Spinner
+$spinner-bg-color: $color-framboise;
+
+// Top
+$top-lineup-btn-color: $color-vanilla;
+$top-lineup-bg-color: $color-pink;
+$top-lineup-btn-border-color: $color-vanilla;
+$top-lineup-btn-hover-color: $color-framboise;
+$top-lineup-btn-hover-bg-color: $color-vanilla;
+$top-lineup-item-drop-shadow-color: $color-framboise;
+
+$top-shop-bg-color: $color-vanilla;
+$top-shop-btn-color: $color-framboise;
+$top-shop-btn-border-color: $color-framboise;
+$top-shop-btn-hover-color: $color-vanilla;
+$top-shop-btn-hover-bg-color: $color-framboise;
+
+$top-sns-bg-color: $color-pink;
+$top-sns-btn-border-color: $color-vanilla;
+$top-sns-twitter-widget-bg-color: $color-white;
+
+$top-statement-bg-color: $color-vanilla;
+
+// Linup
+$lineup-main-bg-color: $color-vanilla;
+$lineup-header-bg-color: $color-white;
+$lineup-nav-bg-color: $color-white;
+$lineup-nav-border-color: $color-vanilla;
+
+$lineup-hero-bg-color: $color-offwhite;
+
+$lineup-productgarelly-bg-color: $color-pink-light;
+$lineup-productgarelly-border-color: $color-framboise;
+
+$lineup-productinfo-bg-color: $color-vanilla;
+
+$lineup-productcomponents-bg-color: $color-pink-xlight;
+$lineup-productcomponents-accordion-btn-color: $color-framboise;
+$lineup-productcomponents-accordion-border-color: $color-framboise;
+
+$lineup-recommend-heading-color: $color-vanilla;
+$lineup-recommend-bg-color: $color-pink;
+
+$lineup-shop-bg-color: $color-vanilla;
+$lineup-shop-btn-color: $color-framboise;
+$lineup-shop-btn-border-color: $color-framboise;
+$lineup-shop-btn-hover-color: $color-vanilla;
+$lineup-shop-btn-hover-bg-color: $color-framboise;
+
+// Shop
+$shoplist-btn-color: $color-framboise;
+$shoplist-btn-border-color: $color-framboise;
+$shoplist-btn-hover-color: $color-vanilla;
+$shoplist-btn-hover-bg-color: $color-framboise;
+
+// 404
+$notfound-btn-color: $color-framboise;
+$notfound-btn-border-color: $color-framboise;
+$notfound-btn-hover-color: $color-vanilla;
+$notfound-btn-hover-bg-color: $color-framboise;
+
+// Another
+$another-main-bg-color: $color-pink-light;
+
+// Animation
+$feminine-transition-duration: 1.5s;
