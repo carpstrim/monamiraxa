@@ -27,6 +27,9 @@
           <br>
         </div>
 
+        <!-- カルーセルサンプル -->
+        <Carousel />
+
         <v-layout class="u-mt-10">
           <Item />
           <Item />
@@ -44,10 +47,12 @@
 </style>
 
 <script>
+import Carousel from '~/components/Carousel'
 import Item from '~/components/Item'
 
 export default {
   components: {
+    Carousel,
     Item
   },
   asyncData ({ store }) {
