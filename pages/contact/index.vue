@@ -27,6 +27,7 @@
         </dd>
       </div>
 
+      <!-- 選択制にしておくのもよいかも -->
       <div>
         <dt>お問い合わせタイトル</dt>
         <dd>
@@ -47,42 +48,35 @@
       </div>
     </dl>
 
-    <!-- <v-btn to="/contact/complete" nuxt>
+    <v-btn to="/contact/complete" nuxt :disabled="!activateSubmit">
       送信
-    </v-btn> -->
-
-    <p :class="[isRed ? 'red' : 'blue']">
-      サンプルテキスト
-    </p>
-    <p>{{ isRed }}</p>
-    <p>{{ !isRed }}</p>
-
-    <v-btn @click="doAction">
-      color Cahnge
     </v-btn>
   </section>
 </template>
 
 <script>
 export default {
-  data: () => {
+  data () {
     return {
       isRed: false,
       sending: '',
-      btnStatus: false,
       contact: {
         name: '',
         mail: '',
-        mainConfirm: '',
+        mailConfirm: '',
         title: '',
         content: ''
       }
     }
   },
-  methods: {
-    doAction: () => {
-      console.log(this.isRed)
-      // this.isRed = !this.isRed
+  computed: {
+    activateSubmit (activate) {
+      activate = false
+
+      if (this.contact.name && this.contact.mail && this.contact.mailConfirm && this.contact.title && this.contact.content) {
+        activate = !activate
+      }
+      return activate
     }
   }
 }
