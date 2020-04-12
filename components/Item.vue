@@ -1,41 +1,18 @@
 <template>
-  <div>
-    <figure>
-      <img :src="item.imgPath" alt="">
-      <figcaption>{{ item.caption }}</figcaption>
-      <figcaption>{{ item.price }}</figcaption>
-    </figure>
-  </div>
+  <ul class="item">
+    <li><slot name="imgPath" /></li>
+    <li><slot name="name" /></li>
+    <li><slot name="price" /></li>
+  </ul>
 </template>
 
-<style lang="scss">
-figure {
-  display: block;
-  width: 90%;
-  margin: 0 auto;
+<style scoped lang="scss">
+img {
+  width: 100%;
+}
 
-  img {
-    width: 100%;
-  }
-
-  figcaption {
-    text-align: center;
-  }
+.item {
+  list-style: none;
+  padding-left: 0;
 }
 </style>
-
-<script>
-import imgPath from '~/assets/img/dummy_square.png'
-
-export default {
-  data () {
-    return {
-      item: {
-        imgPath,
-        caption: 'ユニコーンのもくもくスタイ',
-        price: '1200'
-      }
-    }
-  }
-}
-</script>
