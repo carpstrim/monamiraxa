@@ -48,10 +48,10 @@
                 <img src="~/assets/img/dummy_square.png" alt>
               </template>
               <template v-slot:name>
-                <p>{{ item.name }}</p>
+                {{ item.name }}
               </template>
               <template v-slot:price>
-                <p>{{ item.price }} 円</p>
+                {{ item.price }} 円
               </template>
             </Item>
           </v-col>
