@@ -32,25 +32,24 @@
     <v-container>
       <!-- 商品エリア -->
       <h2>スタイ</h2>
-      <ul class="itemList d-flex justify-space-between flex-wrap">
-        <v-layout column justify-center align-center>
-          <v-flex xs6 sm8 md6>
-            <li v-for="item in jsonAll.items.sty" :key="item.id">
-              <Item>
-                <template v-slot:imgPath>
-                  <img src="~/assets/img/dummy_square.png" alt>
-                </template>
-                <template v-slot:name>
-                  <p>{{ item.name }}</p>
-                </template>
-                <template v-slot:price>
-                  <p>{{ item.price }} 円</p>
-                </template>
-              </Item>
-            </li>
-          </v-flex>
-        </v-layout>
-      </ul>
+
+      <v-container class="itemList">
+        <v-row>
+          <v-col v-for="item in jsonAll.items.sty" :key="item.id" cols="6" sm="4" md="3">
+            <Item class="itemList">
+              <template v-slot:imgPath>
+                <img src="~/assets/img/dummy_square.png" alt>
+              </template>
+              <template v-slot:name>
+                <p>{{ item.name }}</p>
+              </template>
+              <template v-slot:price>
+                <p>{{ item.price }} 円</p>
+              </template>
+            </Item>
+          </v-col>
+        </v-row>
+      </v-container>
       <br>
     </v-container>
   </section>
@@ -78,6 +77,7 @@ export default {
 <style scoped lang="scss">
 .itemList {
   list-style: none;
-  padding-left: 0;
+  width: 100%;
+  /* padding-left: 0; */
 }
 </style>
