@@ -33,9 +33,16 @@
       <!-- 商品エリア -->
       <h2>スタイ</h2>
 
-      <v-container class="itemList">
-        <v-row>
-          <v-col v-for="item in jsonAll.items.sty" :key="item.id" cols="6" sm="4" md="3">
+      <v-container class="pa-0">
+        <v-row tag="ul" class="itemList" dense>
+          <v-col
+            v-for="item in jsonAll.items.sty"
+            :key="item.id"
+            tag="li"
+            cols="6"
+            sm="4"
+            md="3"
+          >
             <Item class="itemList">
               <template v-slot:imgPath>
                 <img src="~/assets/img/dummy_square.png" alt>
@@ -78,6 +85,6 @@ export default {
 .itemList {
   list-style: none;
   width: 100%;
-  /* padding-left: 0; */
+  padding-left: 4px;
 }
 </style>
