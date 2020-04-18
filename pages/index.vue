@@ -1,45 +1,90 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <p><span>トップページ</span>のサンプル文章です</p>
+  <section>
+    <v-parallax src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
+      <v-row align="center" justify="center">
+        <v-col class="text-center" cols="12">
+          <h1 class="display-1 font-weight-thin mb-4">
+            Vuetify.js
+          </h1>
+          <h4 class="subheading">
+            Build your application today!
+          </h4>
+        </v-col>
+      </v-row>
+    </v-parallax>
 
-      <div v-for="item in items.items.sty" :key="item.id">
-        <ul>
-          <li>{{ item.name }}</li>
-          <li>{{ item.price }}</li>
-          <li>{{ item.description }}</li>
-        </ul>
-        <br>
-      </div>
-      <Carousel />
+    <v-container>
+      <!-- お店からのメッセージ -->
+      <v-card>
+        <dl>
+          <dt>お店からのメッセージ</dt>
+          <dd>
+            <ul>
+              <li>お店からのメッセージエリア</li>
+              <li>お店からのメッセージエリア</li>
+              <li>お店からのメッセージエリア</li>
+            </ul>
+          </dd>
+        </dl>
+      </v-card>
+    </v-container>
 
-      <v-layout class="u-mt-10">
-        <Item />
-        <Item />
-        <Item />
-      </v-layout>
-    </v-flex>
-  </v-layout>
+    <v-container>
+      <!-- 商品エリア -->
+      <h2>スタイ</h2>
+
+      <v-container class="pa-0">
+        <v-row tag="ul" class="itemList" dense>
+          <v-col
+            v-for="item in jsonAll.items.sty"
+            :key="item.id"
+            tag="li"
+            cols="6"
+            sm="4"
+            md="3"
+          >
+            <Item class="itemList">
+              <template v-slot:imgPath>
+                <img src="~/assets/img/dummy_square.png" alt>
+              </template>
+              <template v-slot:name>
+                {{ item.name }}
+              </template>
+              <template v-slot:price>
+                {{ item.price }} 円
+              </template>
+            </Item>
+          </v-col>
+        </v-row>
+      </v-container>
+      <br>
+    </v-container>
+  </section>
 </template>
 
-<style scoped lang="scss">
-.u-mt-10 {
-  margin-top: 10px;
-}
-</style>
-
 <script>
-import Carousel from '~/components/Carousel'
 import Item from '~/components/Item'
+// import Slot from '~/components/Slot'
 
 export default {
+  // Parallax のパディング除去用レイアウト
+  layout: 'top',
+
   components: {
-    Carousel,
     Item
+    // Slot
   },
   asyncData ({ store }) {
     const jsonAll = store.getters['json/getAll']
-    return { items: jsonAll }
+    return { jsonAll }
   }
 }
 </script>
+
+<style scoped lang="scss">
+.itemList {
+  list-style: none;
+  width: 100%;
+  padding-left: 4px;
+}
+</style>
