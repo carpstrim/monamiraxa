@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/dotenv": "^1.4.0",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "contentful": "^7.14.3",
     "firebase": "^7.14.1",
     "nuxt": "^2.0.0"
   },

@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+require("dotenv").config()
+const client = require("./plugins/contentful")
 
 export default {
   mode: 'spa',
@@ -32,7 +34,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/firebase'
+    '@/plugins/firebase',
+    '@/plugins/contentful'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -51,6 +54,10 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv'
   ],
+  env: {
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID,
+    CTF_ACCESS_TOKEN: process.env.CTF_ACCESS_TOKEN,
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
@@ -87,7 +94,7 @@ export default {
      */
     // NOTE: これがないとnuxtとfirebaseが共存できない（core-js2とcore-js3の共存）
     babel: {
-      presets ({ isServer }) {
+      presets({ isServer }) {
         return [
           [
             require.resolve('@nuxt/babel-preset-app'),
@@ -100,7 +107,7 @@ export default {
         ]
       }
     },
-    extend (config, ctx) {
+    extend(config, ctx) {
       config.node = {
         fs: 'empty'
       }
