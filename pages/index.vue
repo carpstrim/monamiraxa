@@ -42,6 +42,7 @@
             cols="6"
             sm="4"
             md="3"
+            xl="2"
           >
             <Item class="itemList">
               <template v-slot:imgPath>
