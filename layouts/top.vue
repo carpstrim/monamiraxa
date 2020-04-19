@@ -8,22 +8,24 @@
         fixed
         app
       >
-        <v-list>
-          <v-list-item
-            v-for="(item, i) in items"
-            :key="i"
-            :to="item.to"
-            router
-            exact
-          >
-            <v-list-item-action>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title v-text="item.title" />
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
+        <div class="drawer">
+          <v-list>
+            <v-list-item
+              v-for="(item, i) in items"
+              :key="i"
+              :to="item.to"
+              router
+              exact
+            >
+              <v-list-item-action>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title v-text="item.title" />
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </div>
       </v-navigation-drawer>
       <v-app-bar
         :clipped-left="clipped"
@@ -91,5 +93,11 @@ export default {
 .main {
   height: 100%;
   background-color: $color-main;
+}
+
+.drawer {
+  color: $color-default;
+  height: 100%;
+  background: top left / 360px repeat url('~assets/img/bg_flower_orange.png');
 }
 </style>

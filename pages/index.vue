@@ -1,6 +1,6 @@
 <template>
   <section>
-    <v-parallax src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
+    <v-parallax src="img/dummy_mainvisual.jpg">
       <v-row align="center" justify="center">
         <v-col class="text-center" cols="12">
           <h1 class="display-1 font-weight-thin mb-4">
@@ -15,7 +15,7 @@
 
     <v-container>
       <!-- お店からのメッセージ -->
-      <v-card>
+      <v-card class="message">
         <dl>
           <dt>お店からのメッセージ</dt>
           <dd>
@@ -45,7 +45,7 @@
           >
             <Item class="itemList">
               <template v-slot:imgPath>
-                <img src="~/assets/img/dummy_square.png" alt>
+                <img src="~/assets/img/dummy_square.jpg" alt>
               </template>
               <template v-slot:name>
                 {{ item.name }}
@@ -82,6 +82,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.message {
+  padding: 12px 16px;
+  color: $color-default;
+}
+
 .itemList {
   list-style: none;
   width: 100%;
