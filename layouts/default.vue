@@ -31,6 +31,7 @@
         :clipped-left="clipped"
         fixed
         app
+        class="header"
       >
         <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
@@ -90,17 +91,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.main {
-  color: $color-default;
-  height: 100%;
-  background-color: $color-main;
-}
-
-.drawer {
-  color: $color-default;
-  height: 100%;
-  background: top left / 360px repeat url('~assets/img/bg_flower_orange.png');
-}
-</style>

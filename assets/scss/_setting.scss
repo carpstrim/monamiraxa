@@ -30,8 +30,9 @@ $easeInOutCirc: cubic-bezier(0.785, 0.135, 0.15, 0.86) !default;
 $easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55) !default;
 
 // $color-main: hsl(57, 97, 86);
-$color-main: hsl(57, 97, 94);
-$color-default: hsl(287, 11, 25);
-$color-accent: hsl(345, 64, 57);
-$color-shellpink: hsl(24, 53, 88);
-$color-cyclamen: hsl(282, 88, 87);
+$color-main: hsl(57, 97, 94)!important;
+$color-default: hsl(287, 11, 25)!important;
+$color-accent: hsl(345, 64, 57)!important;
+$color-warning: hsl(345, 100, 55)!important;
+$color-shellpink: hsl(24, 53, 88)!important;
+$color-cyclamen: hsl(282, 88, 87)!important;

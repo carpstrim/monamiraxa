@@ -44,7 +44,7 @@
             md="3"
             xl="2"
           >
-            <Item class="itemList">
+            <Item class="item">
               <template v-slot:imgPath>
                 <img src="~/assets/img/dummy_square.jpg" alt>
               </template>
@@ -83,6 +83,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.header {
+  height: 100%;
+  background-color: $color-main;
+}
+
 .message {
   padding: 12px 16px;
   color: $color-default;
@@ -90,7 +95,35 @@ export default {
 
 .itemList {
   list-style: none;
-  width: 100%;
-  padding-left: 4px;
+  padding-left: 0;
 }
+
+.item {
+  $radius: 10px;
+
+  position: relative;
+  width: 100%;
+  border-radius: $radius;
+  overflow: hidden;
+
+  &::before {
+    content: 'sold';
+    display: block;
+    position: absolute;
+    top: -40px;
+    left: -44px;
+    padding-top: 55px;
+    width: 80px;
+    height: 80px;
+    background-color: $color-warning;
+    color: white;
+    text-align: center;
+    transform: rotate(-45deg);
+  }
+
+    img {
+    border-radius: $radius;
+  }
+}
+
 </style>
