@@ -7,6 +7,7 @@
         :clipped="clipped"
         fixed
         app
+        color="yellow lighten-5"
       >
         <div class="drawer">
           <v-list>
@@ -16,6 +17,7 @@
               :to="item.to"
               router
               exact
+              color="#443947"
             >
               <v-list-item-action>
                 <v-icon>{{ item.icon }}</v-icon>
@@ -32,6 +34,7 @@
         fixed
         app
         class="header"
+        color="yellow lighten-5"
       >
         <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 

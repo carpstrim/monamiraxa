@@ -15,7 +15,7 @@
 
     <v-container>
       <!-- お店からのメッセージ -->
-      <v-card class="message">
+      <v-card class="message" color="grey lighten-5" elevation="0">
         <dl>
           <dt>お店からのメッセージ</dt>
           <dd>
@@ -29,7 +29,7 @@
       </v-card>
     </v-container>
 
-    <v-container>
+    <v-container color="yellow lighten-5">
       <!-- 商品エリア -->
       <h2>スタイ</h2>
 
@@ -83,11 +83,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.header {
-  height: 100%;
-  background-color: $color-main;
-}
-
 .message {
   padding: 12px 16px;
   color: $color-default;
