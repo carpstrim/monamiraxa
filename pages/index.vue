@@ -20,9 +20,9 @@
           <dt>お店からのメッセージ</dt>
           <dd>
             <ul>
-              <li>お店からのメッセージエリア</li>
-              <li>お店からのメッセージエリア</li>
-              <li>お店からのメッセージエリア</li>
+              <li v-for="message in jsonAll.message" :key="message.id">
+                {{ message }}
+              </li>
             </ul>
           </dd>
         </dl>
