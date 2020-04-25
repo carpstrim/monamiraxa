@@ -43,7 +43,7 @@
             md="3"
             xl="2"
           >
-            <Item class="item">
+            <Item :stock="item.stock">
               <template v-slot:imgPath>
                 <img src="~/assets/img/dummy_square.jpg" alt>
               </template>
@@ -94,34 +94,6 @@ export default {
 .itemList {
   list-style: none;
   padding-left: 0;
-}
-
-.item {
-  $radius: 10px;
-
-  position: relative;
-  width: 100%;
-  border-radius: $radius;
-  overflow: hidden;
-
-  &::before {
-    content: 'sold';
-    display: block;
-    position: absolute;
-    top: -40px;
-    left: -44px;
-    padding-top: 55px;
-    width: 80px;
-    height: 80px;
-    background-color: $color-warning;
-    color: white;
-    text-align: center;
-    transform: rotate(-45deg);
-  }
-
-    img {
-    border-radius: $radius;
-  }
 }
 
 </style>
