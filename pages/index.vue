@@ -13,14 +13,13 @@
       </v-row>
     </v-parallax>
 
-    <v-container>
-      <!-- お店からのメッセージ -->
+    <v-container v-if="jsonAll.message.length > 0 ">
       <v-card class="message" color="grey lighten-5" elevation="0">
         <dl>
           <dt>お店からのメッセージ</dt>
           <dd>
             <ul>
-              <li v-for="message in jsonAll.message" :key="message.id">
+              <li v-for="message in limitMessage" :key="message.id">
                 {{ message }}
               </li>
             </ul>
@@ -70,7 +69,6 @@ import Item from '~/components/Item'
 export default {
   // Parallax のパディング除去用レイアウト
   layout: 'top',
-
   components: {
     Item
     // Slot
@@ -78,6 +76,11 @@ export default {
   asyncData ({ store }) {
     const jsonAll = store.getters['json/getAll']
     return { jsonAll }
+  },
+  computed: {
+    limitMessage () {
+      return this.jsonAll.message.slice(0, 3)
+    }
   }
 }
 </script>
