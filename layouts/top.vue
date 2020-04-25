@@ -65,24 +65,53 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
+          icon: 'mdi-store-outline',
           title: 'HOME',
           to: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
+          icon: 'mdi-information-outline',
           title: 'お店のこと',
           to: '/about'
         },
         {
-          icon: 'mdi-chart-bubble',
+          icon: 'mdi-cart-outline',
           title: 'お買い物の流れ',
           to: '/flow'
         },
         {
-          icon: 'mdi-chart-bubble',
+          icon: 'mdi-email-outline',
           title: 'お問い合わせ',
           to: '/contact'
+        }
+      ],
+      category: [
+        {
+          main: 'スタイ',
+          sub: [
+            'もくもく',
+            'たまご',
+            'ドーナツ',
+            'その他'
+          ]
+        },
+        {
+          main: 'よだれカバー'
+        },
+        {
+          main: 'ガーゼハンカチ'
+        },
+        {
+          main: 'にぎにぎ'
+        },
+        {
+          main: 'おなまえタグ'
+        },
+        {
+          main: 'その他'
+        },
+        {
+          main: 'ラッピング'
         }
       ],
       miniVariant: false,
