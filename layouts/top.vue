@@ -27,6 +27,23 @@
               </v-list-item-content>
             </v-list-item>
           </v-list>
+          <hr>
+          <v-list>
+            <v-list-item
+              v-for="(item, i) in category"
+              :key="i"
+              color="#443947"
+            >
+              <v-list-item-content>
+                <v-list-item-title v-text="item.main" />
+                <v-list v-if="item.sub">
+                  <v-list-item v-for="subitem in item.sub" :key="subitem.id">
+                    {{ subitem }}
+                  </v-list-item>
+                </v-list>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
         </div>
       </v-navigation-drawer>
       <v-app-bar
@@ -88,6 +105,7 @@ export default {
       ],
       category: [
         {
+          icon: 'mdi-circle-small',
           main: 'スタイ',
           sub: [
             'もくもく',
