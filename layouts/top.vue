@@ -47,6 +47,7 @@
       </v-content>
 
       <v-footer
+        class="footer"
         :fixed="fixed"
         app
       >
