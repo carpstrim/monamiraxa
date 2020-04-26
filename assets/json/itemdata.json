@@ -2,6 +2,7 @@
   "items": {
     "sty": [
       {
+        "id": "1000",
         "name": "ユニコーンのもくもくスタイ",
         "price": 1200,
         "imgPath": "_nuxt/assets/img/dummy_square.jpg",
@@ -15,6 +16,7 @@
         "stock": 5
       },
       {
+        "id": "1001",
         "name": "恐竜のもくもくスタイ",
         "price": 1800,
         "imgPath": "_nuxt/assets/img/dummy_square.jpg",
@@ -28,6 +30,7 @@
         "stock": 0
       },
       {
+        "id": "1002",
         "name": "トラときどきライオンもくもくスタイ",
         "price": 1200,
         "imgPath": "_nuxt/assets/img/dummy_square.jpg",
@@ -41,6 +44,7 @@
         "stock": 0
       },
       {
+        "id": "1003",
         "name": "ユニコーンのもくもくスタイ",
         "price": 1200,
         "imgPath": "_nuxt/assets/img/dummy_square.jpg",
@@ -54,6 +58,7 @@
         "stock": 3
       },
       {
+        "id": "1004",
         "name": "恐竜のもくもくスタイ",
         "price": 1800,
         "imgPath": "_nuxt/assets/img/dummy_square.jpg",
@@ -67,6 +72,7 @@
         "stock": 1
       },
       {
+        "id": "1005",
         "name": "トラときどきライオンもくもくスタイ",
         "price": 1200,
         "imgPath": "_nuxt/assets/img/dummy_square.jpg",
