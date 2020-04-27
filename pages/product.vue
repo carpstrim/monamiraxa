@@ -3,8 +3,6 @@
     <v-container color="yellow lighten-5">
       <v-container class="pa-0">
         <v-row
-          v-for="item in jsonAll.items.sty"
-          :key="item.id"
           dense
         >
           <!-- TODO: カルーセルに差し替え予定 -->
@@ -13,24 +11,24 @@
             xs="12"
             sm="6"
           >
-            <h2>{{ item.name }}</h2>
-            <img :src="item.imgPath" alt="">
+            <h2>{{ currentProduct.name }}</h2>
+            <img :src="currentProduct.imgPath" alt="">
           </v-col>
           <v-col
             cols="12"
             xs="12"
             sm="6"
           >
-            <p>{{ item.description }}</p>
+            <p>{{ currentProduct.description }}</p>
             <dl>
               <dt class="u-inline u-va-top">
                 サイズ：
               </dt>
               <dd class="u-inline">
                 <ul>
-                  <li>約 {{ item.size.vertical }} cm</li>
-                  <li>約 {{ item.size.horizontal }} cm</li>
-                  <li>約 {{ item.size.neck }} cm</li>
+                  <li>約 {{ currentProduct.size.vertical }} cm</li>
+                  <li>約 {{ currentProduct.size.horizontal }} cm</li>
+                  <li>約 {{ currentProduct.size.neck }} cm</li>
                 </ul>
               </dd>
             </dl>
@@ -40,7 +38,7 @@
                 素材：
               </dt>
               <dd class="u-inline">
-                {{ item.material }}
+                {{ currentProduct.material }}
               </dd>
             </dl>
             <hr>
@@ -49,7 +47,7 @@
                 価格：
               </dt>
               <dd class="u-inline">
-                {{ item.price }}
+                {{ currentProduct.price }}
               </dd>
             </dl>
             <dl>
@@ -57,7 +55,7 @@
                 在庫数：
               </dt>
               <dd class="u-inline">
-                {{ item.stock }}
+                {{ currentProduct.stock }}
               </dd>
             </dl>
             <dl>
@@ -86,10 +84,19 @@ export default {
     const jsonAll = store.getters['json/getAll']
     return { jsonAll }
   },
-  computed: {
-    limitMessage () {
-      return this.jsonAll.message.slice(0, 3)
+  data () {
+    return {
+      sample: 'text',
+      currentProduct: {}
     }
+  },
+  created () {
+    const categoryKey = 'sty' // TODO: パラメータから取得予定
+    const categoryArray = 1 // TODO: パラメータから取得予定
+    const productId = this.jsonAll.items[categoryKey][categoryArray].id
+    const pageProduct = this.jsonAll.items.sty.find(el => el.id === productId)
+
+    this.currentProduct = pageProduct
   }
 }
 </script>
