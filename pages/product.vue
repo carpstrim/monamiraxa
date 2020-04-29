@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <v-container color="yellow lighten-5">
+  <v-container color="yellow lighten-5">
+    <section>
       <v-container class="pa-0">
         <v-row
           dense
@@ -73,9 +73,8 @@
           </v-col>
         </v-row>
       </v-container>
-      <br>
-    </v-container>
-  </section>
+    </section>
+  </v-container>
 </template>
 
 <script>

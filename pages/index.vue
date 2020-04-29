@@ -67,8 +67,6 @@ import Item from '~/components/Item'
 // import Slot from '~/components/Slot'
 
 export default {
-  // Parallax のパディング除去用レイアウト
-  layout: 'top',
   components: {
     Item
     // Slot

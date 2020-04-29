@@ -8,43 +8,42 @@
         fixed
         app
         color="primary"
+        class="drawer"
       >
-        <div class="drawer">
-          <v-list>
-            <v-list-item
-              v-for="(item, i) in items"
-              :key="i"
-              :to="item.to"
-              router
-              exact
-              color="#443947"
-            >
-              <v-list-item-action>
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title v-text="item.title" />
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-          <hr>
-          <v-list>
-            <v-list-item
-              v-for="(item, i) in category"
-              :key="i"
-              color="#443947"
-            >
-              <v-list-item-content>
-                <v-list-item-title v-text="item.main" />
-                <v-list v-if="item.sub">
-                  <v-list-item v-for="subitem in item.sub" :key="subitem.id">
-                    {{ subitem }}
-                  </v-list-item>
-                </v-list>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </div>
+        <v-list>
+          <v-list-item
+            v-for="(item, i) in items"
+            :key="i"
+            :to="item.to"
+            router
+            exact
+            color="#443947"
+          >
+            <v-list-item-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title v-text="item.title" />
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+        <hr>
+        <v-list>
+          <v-list-item
+            v-for="(item, i) in category"
+            :key="i"
+            color="#443947"
+          >
+            <v-list-item-content>
+              <v-list-item-title v-text="item.main" />
+              <v-list v-if="item.sub">
+                <v-list-item v-for="subitem in item.sub" :key="subitem.id">
+                  {{ subitem }}
+                </v-list-item>
+              </v-list>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
       </v-navigation-drawer>
       <v-app-bar
         :clipped-left="clipped"
@@ -60,7 +59,9 @@
         <v-spacer />
       </v-app-bar>
       <v-content>
-        <nuxt />
+        <v-container>
+          <nuxt />
+        </v-container>
       </v-content>
 
       <v-footer

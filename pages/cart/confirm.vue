@@ -1,14 +1,16 @@
 <template>
-  <section>
-    <v-data-table
-      :headers="headers"
-      :items="desserts"
-      class="elevation-1"
-    />
-    <v-btn>前の画面に戻る</v-btn>
-    <p>この内容でよろしければ、「申し込みする」ボタンを推してください。</p>
-    <v-btn>申し込みする</v-btn>
-  </section>
+  <v-container>
+    <section>
+      <v-data-table
+        :headers="headers"
+        :items="desserts"
+        class="elevation-1"
+      />
+      <v-btn>前の画面に戻る</v-btn>
+      <p>この内容でよろしければ、「申し込みする」ボタンを推してください。</p>
+      <v-btn>申し込みする</v-btn>
+    </section>
+  </v-container>
 </template>
 
 <script>
