@@ -87,13 +87,12 @@ export default {
   data () {
     return {
       sample: 'text',
-      currentProduct: {}
+      currentProduct: {},
+      query: {}
     }
   },
   created () {
-    const categoryKey = 'sty' // TODO: パラメータから取得予定
-    const categoryArray = 1 // TODO: パラメータから取得予定
-    const productId = this.jsonAll.items[categoryKey][categoryArray].id
+    const productId = this.$route.query.id
     const pageProduct = this.jsonAll.items.sty.find(el => el.id === productId)
 
     this.currentProduct = pageProduct
