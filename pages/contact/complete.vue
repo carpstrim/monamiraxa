@@ -1,5 +1,16 @@
 <template>
-  <v-layout>
-    <p>complete page</p>
-  </v-layout>
+  <v-container>
+    <section>
+      <h1>お問い合わせ</h1>
+      <p>
+        お問い合わせを受け付けました。
+      </p>
+      <p>
+        後ほど、メールにてご回答させていただきます。<br>（回答には数日いただく場合がありますので、ご了承ください。）
+      </p>
+      <p>
+        monamiraxa.handmade@gmail.com<br>からのメールを受信できるようにご設定をお願いします。
+      </p>
+    </section>
+  </v-container>
 </template>
