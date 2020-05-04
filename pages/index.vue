@@ -43,17 +43,19 @@
             md="3"
             xl="2"
           >
-            <Item :stock="item.stock">
-              <template v-slot:imgPath>
-                <img src="~/assets/img/dummy_square.jpg" alt>
-              </template>
-              <template v-slot:name>
-                {{ item.name }}
-              </template>
-              <template v-slot:price>
-                {{ item.price }} 円
-              </template>
-            </Item>
+            <n-link :to="{ path: '/product/?id=' + item.id }">
+              <Item :stock="item.stock">
+                <template v-slot:imgPath>
+                  <img src="~/assets/img/dummy_square.jpg" alt>
+                </template>
+                <template v-slot:name>
+                  {{ item.name }}
+                </template>
+                <template v-slot:price>
+                  {{ item.price }} 円
+                </template>
+              </Item>
+            </n-link>
           </v-col>
         </v-row>
       </v-container>
