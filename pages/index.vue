@@ -323,7 +323,7 @@
 </template>
 
 <script>
-import Item from '~/components/Item'
+import Item from '~/components/molecules/Item'
 
 export default {
   components: {
