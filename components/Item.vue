@@ -26,16 +26,24 @@ export default {
 .item {
   $radius: 10px;
 
+  position: relative;
   list-style: none;
   margin-bottom: 10px;
   padding-left: 0;
   width: 100%;
   border-radius: $radius;
   overflow: hidden;
+  color: $color-default;
+  text-decoration: none;
+  transition: 0.2s;
 
   img {
     width: 100%;
     border-radius: $radius;
+  }
+
+  &:hover {
+    opacity: 0.7;
   }
 }
 

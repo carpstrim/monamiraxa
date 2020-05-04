@@ -41,7 +41,7 @@
             md="3"
             xl="2"
           >
-            <n-link :to="{ path: '/product/?id=' + item.id }">
+            <n-link :to="{ path: '/product/?category=sty&subcategory=mokumoku&id=' + item.id }">
               <Item :stock="item.stock">
                 <template v-slot:imgPath>
                   <img src="~/assets/img/dummy_square.jpg" alt>
@@ -59,10 +59,265 @@
       </v-container>
 
       <h3>たまご</h3>
+      <v-container class="pa-0">
+        <v-row tag="ul" class="itemList" dense>
+          <v-col
+            v-for="item in jsonAll.sty.tamago"
+            :key="item.id"
+            tag="li"
+            cols="6"
+            sm="4"
+            md="3"
+            xl="2"
+          >
+            <n-link :to="{ path: '/product/?category=sty&subcategory=tamago&id=' + item.id }">
+              <Item :stock="item.stock">
+                <template v-slot:imgPath>
+                  <img src="~/assets/img/dummy_square.jpg" alt>
+                </template>
+                <template v-slot:name>
+                  {{ item.name }}
+                </template>
+                <template v-slot:price>
+                  {{ item.price }} 円
+                </template>
+              </Item>
+            </n-link>
+          </v-col>
+        </v-row>
+      </v-container>
 
       <h3>ドーナツ</h3>
+      <v-container class="pa-0">
+        <v-row tag="ul" class="itemList" dense>
+          <v-col
+            v-for="item in jsonAll.sty.donut"
+            :key="item.id"
+            tag="li"
+            cols="6"
+            sm="4"
+            md="3"
+            xl="2"
+          >
+            <n-link :to="{ path: '/product/?category=sty&subcategory=donut&id=' + item.id }">
+              <Item :stock="item.stock">
+                <template v-slot:imgPath>
+                  <img src="~/assets/img/dummy_square.jpg" alt>
+                </template>
+                <template v-slot:name>
+                  {{ item.name }}
+                </template>
+                <template v-slot:price>
+                  {{ item.price }} 円
+                </template>
+              </Item>
+            </n-link>
+          </v-col>
+        </v-row>
+      </v-container>
 
       <h3>その他</h3>
+      <v-container class="pa-0">
+        <v-row tag="ul" class="itemList" dense>
+          <v-col
+            v-for="item in jsonAll.sty.other"
+            :key="item.id"
+            tag="li"
+            cols="6"
+            sm="4"
+            md="3"
+            xl="2"
+          >
+            <n-link :to="{ path: '/product/?category=sty&subcategory=other&id=' + item.id }">
+              <Item :stock="item.stock">
+                <template v-slot:imgPath>
+                  <img src="~/assets/img/dummy_square.jpg" alt>
+                </template>
+                <template v-slot:name>
+                  {{ item.name }}
+                </template>
+                <template v-slot:price>
+                  {{ item.price }} 円
+                </template>
+              </Item>
+            </n-link>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <h2>よだれカバー</h2>
+      <v-container class="pa-0">
+        <v-row tag="ul" class="itemList" dense>
+          <v-col
+            v-for="item in jsonAll.droolcover"
+            :key="item.id"
+            tag="li"
+            cols="6"
+            sm="4"
+            md="3"
+            xl="2"
+          >
+            <n-link :to="{ path: '/product/?category=droolcover&id=' + item.id }">
+              <Item :stock="item.stock">
+                <template v-slot:imgPath>
+                  <img src="~/assets/img/dummy_square.jpg" alt>
+                </template>
+                <template v-slot:name>
+                  {{ item.name }}
+                </template>
+                <template v-slot:price>
+                  {{ item.price }} 円
+                </template>
+              </Item>
+            </n-link>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <h2>ガーゼハンカチ</h2>
+      <v-container class="pa-0">
+        <v-row tag="ul" class="itemList" dense>
+          <v-col
+            v-for="item in jsonAll.gauzehandkerchief"
+            :key="item.id"
+            tag="li"
+            cols="6"
+            sm="4"
+            md="3"
+            xl="2"
+          >
+            <n-link :to="{ path: '/product/?category=gauzehandkerchief&id=' + item.id }">
+              <Item :stock="item.stock">
+                <template v-slot:imgPath>
+                  <img src="~/assets/img/dummy_square.jpg" alt>
+                </template>
+                <template v-slot:name>
+                  {{ item.name }}
+                </template>
+                <template v-slot:price>
+                  {{ item.price }} 円
+                </template>
+              </Item>
+            </n-link>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <h2>にぎにぎ</h2>
+      <v-container class="pa-0">
+        <v-row tag="ul" class="itemList" dense>
+          <v-col
+            v-for="item in jsonAll.niginigi"
+            :key="item.id"
+            tag="li"
+            cols="6"
+            sm="4"
+            md="3"
+            xl="2"
+          >
+            <n-link :to="{ path: '/product/?category=niginigi&id=' + item.id }">
+              <Item :stock="item.stock">
+                <template v-slot:imgPath>
+                  <img src="~/assets/img/dummy_square.jpg" alt>
+                </template>
+                <template v-slot:name>
+                  {{ item.name }}
+                </template>
+                <template v-slot:price>
+                  {{ item.price }} 円
+                </template>
+              </Item>
+            </n-link>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <h2>おなまえタグ</h2>
+      <v-container class="pa-0">
+        <v-row tag="ul" class="itemList" dense>
+          <v-col
+            v-for="item in jsonAll.nametag"
+            :key="item.id"
+            tag="li"
+            cols="6"
+            sm="4"
+            md="3"
+            xl="2"
+          >
+            <n-link :to="{ path: '/product/?category=nametag&id=' + item.id }">
+              <Item :stock="item.stock">
+                <template v-slot:imgPath>
+                  <img src="~/assets/img/dummy_square.jpg" alt>
+                </template>
+                <template v-slot:name>
+                  {{ item.name }}
+                </template>
+                <template v-slot:price>
+                  {{ item.price }} 円
+                </template>
+              </Item>
+            </n-link>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <h2>その他</h2>
+      <v-container class="pa-0">
+        <v-row tag="ul" class="itemList" dense>
+          <v-col
+            v-for="item in jsonAll.other"
+            :key="item.id"
+            tag="li"
+            cols="6"
+            sm="4"
+            md="3"
+            xl="2"
+          >
+            <n-link :to="{ path: '/product/?category=other&id=' + item.id }">
+              <Item :stock="item.stock">
+                <template v-slot:imgPath>
+                  <img src="~/assets/img/dummy_square.jpg" alt>
+                </template>
+                <template v-slot:name>
+                  {{ item.name }}
+                </template>
+                <template v-slot:price>
+                  {{ item.price }} 円
+                </template>
+              </Item>
+            </n-link>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <h2>ラッピング</h2>
+      <v-container class="pa-0">
+        <v-row tag="ul" class="itemList" dense>
+          <v-col
+            v-for="item in jsonAll.wrapping"
+            :key="item.id"
+            tag="li"
+            cols="6"
+            sm="4"
+            md="3"
+            xl="2"
+          >
+            <n-link :to="{ path: '/product/?category=wrapping&id=' + item.id }">
+              <Item :stock="item.stock">
+                <template v-slot:imgPath>
+                  <img src="~/assets/img/dummy_square.jpg" alt>
+                </template>
+                <template v-slot:name>
+                  {{ item.name }}
+                </template>
+                <template v-slot:price>
+                  {{ item.price }} 円
+                </template>
+              </Item>
+            </n-link>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-container>
   </section>
 </template>
