@@ -92,7 +92,7 @@ export default {
   },
   created () {
     const productId = this.$route.query.id
-    const pageProduct = this.jsonAll.items.sty.find(el => el.id === productId)
+    const pageProduct = this.jsonAll.sty.mokumoku.find(el => el.id === productId)
 
     this.currentProduct = pageProduct
   }

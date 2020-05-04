@@ -4,11 +4,8 @@
       <v-row align="center" justify="center">
         <v-col class="text-center" cols="12">
           <h1 class="display-1 font-weight-thin mb-4">
-            Vuetify.js
+            mon ami raxa
           </h1>
-          <h4 class="subheading">
-            Build your application today!
-          </h4>
         </v-col>
       </v-row>
     </v-parallax>
@@ -31,11 +28,12 @@
     <v-container color="yellow lighten-5">
       <!-- 商品エリア -->
       <h2>スタイ</h2>
+      <h3>もくもく</h3>
 
       <v-container class="pa-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
-            v-for="item in jsonAll.items.sty"
+            v-for="item in jsonAll.sty.mokumoku"
             :key="item.id"
             tag="li"
             cols="6"
@@ -59,19 +57,22 @@
           </v-col>
         </v-row>
       </v-container>
-      <br>
+
+      <h3>たまご</h3>
+
+      <h3>ドーナツ</h3>
+
+      <h3>その他</h3>
     </v-container>
   </section>
 </template>
 
 <script>
 import Item from '~/components/Item'
-// import Slot from '~/components/Slot'
 
 export default {
   components: {
     Item
-    // Slot
   },
   asyncData ({ store }) {
     const jsonAll = store.getters['json/getAll']
