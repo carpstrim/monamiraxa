@@ -43,13 +43,13 @@
           >
             <n-link :to="{ path: '/product/?category=sty&subcategory=mokumoku&id=' + item.id }">
               <Item :stock="item.stock">
-                <template v-slot:imgPath>
+                <template #imgPath>
                   <img src="~/assets/img/dummy_square.jpg" alt>
                 </template>
-                <template v-slot:name>
+                <template #name>
                   {{ item.name }}
                 </template>
-                <template v-slot:price>
+                <template #price>
                   {{ item.price }} 円
                 </template>
               </Item>
@@ -72,13 +72,13 @@
           >
             <n-link :to="{ path: '/product/?category=sty&subcategory=tamago&id=' + item.id }">
               <Item :stock="item.stock">
-                <template v-slot:imgPath>
+                <template #imgPath>
                   <img src="~/assets/img/dummy_square.jpg" alt>
                 </template>
-                <template v-slot:name>
+                <template #name>
                   {{ item.name }}
                 </template>
-                <template v-slot:price>
+                <template #price>
                   {{ item.price }} 円
                 </template>
               </Item>
@@ -101,13 +101,13 @@
           >
             <n-link :to="{ path: '/product/?category=sty&subcategory=donut&id=' + item.id }">
               <Item :stock="item.stock">
-                <template v-slot:imgPath>
+                <template #imgPath>
                   <img src="~/assets/img/dummy_square.jpg" alt>
                 </template>
-                <template v-slot:name>
+                <template #name>
                   {{ item.name }}
                 </template>
-                <template v-slot:price>
+                <template #price>
                   {{ item.price }} 円
                 </template>
               </Item>
@@ -130,13 +130,13 @@
           >
             <n-link :to="{ path: '/product/?category=sty&subcategory=other&id=' + item.id }">
               <Item :stock="item.stock">
-                <template v-slot:imgPath>
+                <template #imgPath>
                   <img src="~/assets/img/dummy_square.jpg" alt>
                 </template>
-                <template v-slot:name>
+                <template #name>
                   {{ item.name }}
                 </template>
-                <template v-slot:price>
+                <template #price>
                   {{ item.price }} 円
                 </template>
               </Item>
@@ -159,13 +159,13 @@
           >
             <n-link :to="{ path: '/product/?category=droolcover&id=' + item.id }">
               <Item :stock="item.stock">
-                <template v-slot:imgPath>
+                <template #imgPath>
                   <img src="~/assets/img/dummy_square.jpg" alt>
                 </template>
-                <template v-slot:name>
+                <template #name>
                   {{ item.name }}
                 </template>
-                <template v-slot:price>
+                <template #price>
                   {{ item.price }} 円
                 </template>
               </Item>
@@ -188,13 +188,13 @@
           >
             <n-link :to="{ path: '/product/?category=gauzehandkerchief&id=' + item.id }">
               <Item :stock="item.stock">
-                <template v-slot:imgPath>
+                <template #imgPath>
                   <img src="~/assets/img/dummy_square.jpg" alt>
                 </template>
-                <template v-slot:name>
+                <template #name>
                   {{ item.name }}
                 </template>
-                <template v-slot:price>
+                <template #price>
                   {{ item.price }} 円
                 </template>
               </Item>
@@ -217,13 +217,13 @@
           >
             <n-link :to="{ path: '/product/?category=niginigi&id=' + item.id }">
               <Item :stock="item.stock">
-                <template v-slot:imgPath>
+                <template #imgPath>
                   <img src="~/assets/img/dummy_square.jpg" alt>
                 </template>
-                <template v-slot:name>
+                <template #name>
                   {{ item.name }}
                 </template>
-                <template v-slot:price>
+                <template #price>
                   {{ item.price }} 円
                 </template>
               </Item>
@@ -246,13 +246,13 @@
           >
             <n-link :to="{ path: '/product/?category=nametag&id=' + item.id }">
               <Item :stock="item.stock">
-                <template v-slot:imgPath>
+                <template #imgPath>
                   <img src="~/assets/img/dummy_square.jpg" alt>
                 </template>
-                <template v-slot:name>
+                <template #name>
                   {{ item.name }}
                 </template>
-                <template v-slot:price>
+                <template #price>
                   {{ item.price }} 円
                 </template>
               </Item>
@@ -275,13 +275,13 @@
           >
             <n-link :to="{ path: '/product/?category=other&id=' + item.id }">
               <Item :stock="item.stock">
-                <template v-slot:imgPath>
+                <template #imgPath>
                   <img src="~/assets/img/dummy_square.jpg" alt>
                 </template>
-                <template v-slot:name>
+                <template #name>
                   {{ item.name }}
                 </template>
-                <template v-slot:price>
+                <template #price>
                   {{ item.price }} 円
                 </template>
               </Item>
@@ -304,13 +304,13 @@
           >
             <n-link :to="{ path: '/product/?category=wrapping&id=' + item.id }">
               <Item :stock="item.stock">
-                <template v-slot:imgPath>
+                <template #imgPath>
                   <img src="~/assets/img/dummy_square.jpg" alt>
                 </template>
-                <template v-slot:name>
+                <template #name>
                   {{ item.name }}
                 </template>
-                <template v-slot:price>
+                <template #price>
                   {{ item.price }} 円
                 </template>
               </Item>
