@@ -1,5 +1,49 @@
 <template>
-  <v-layout>
-    <p>flow page</p>
-  </v-layout>
+  <v-container>
+    <section>
+      <h1>お買い物の流れ</h1>
+      <p>当店でのお買い物の流れは下記の通りです。</p>
+      <v-layout>
+        <ol>
+          <li>
+            <h2>1. お客様</h2>
+            <ol>
+              <li>商品をカートに入れる</li>
+              <li>カートの中身を確認</li>
+              <li>お客さま情報の入力</li>
+              <li>お届け先情報の入力</li>
+              <li>申し込み</li>
+            </ol>
+          </li>
+          <li>
+            <h2>2. お店</h2>
+            <ol>
+              <li>申し込み内容を自動返信メールでお知らせ</li>
+              <li>在庫の確認・送料の決定</li>
+              <li>合計金額と振込先をメールでお知らせ（注文確定）</li>
+            </ol>
+          </li>
+          <li>
+            <h2>3. お客様</h2>
+            <ol>
+              <li>お振込み</li>
+            </ol>
+          </li>
+          <li>
+            <h2>4. お店</h2>
+            <ol>
+              <li>お振込みの確認後、商品を発送</li>
+              <li>発送完了をメールでお知らせ</li>
+            </ol>
+          </li>
+          <li>
+            <h2>5. お客様</h2>
+            <ol>
+              <li>商品のお受け取り</li>
+            </ol>
+          </li>
+        </ol>
+      </v-layout>
+    </section>
+  </v-container>
 </template>
