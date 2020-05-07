@@ -104,19 +104,7 @@ export default {
           ]
         ]
       }
-    },
-    extend (config, ctx) {
-      config.node = {
-        fs: 'empty'
-      }
-      if (ctx.isServer) {
-        // add for vuetify
-        config.externals = [
-          nodeExternals({
-            whitelist: [/^vuetify/]
-          })
-        ]
-      }
     }
+
   }
 }

@@ -71,10 +71,14 @@ export default {
     Item
     // Slot
   },
-  asyncData ({ store }) {
+  asyncData ({ store, app }) {
+    // const json = app.$firestore.collection("aaa").then(snapshot => {return snapshot.docs.map(doc => {return doc.data()})})
     const jsonAll = store.getters['json/getAll']
     return { jsonAll }
   },
+  /* beforeCreate() {
+    this.json = this.$firestore.collection();
+  }, */
   computed: {
     limitMessage () {
       return this.jsonAll.message.slice(0, 3)
@@ -93,5 +97,4 @@ export default {
   list-style: none;
   padding-left: 0;
 }
-
 </style>

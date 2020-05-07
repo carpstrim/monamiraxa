@@ -1,6 +1,6 @@
 const functions = require('firebase-functions')
 const admin = require('firebase-admin')
-//const axios = require('axios')
+// const axios = require('axios')
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -11,6 +11,6 @@ const admin = require('firebase-admin')
 
 admin.initializeApp()
 
-exports.test = functions.https.onCall(async (data, context) => {
-    console.log('test')
+exports.test = functions.https.onCall((data, context) => {
+  console.log('test')
 })
