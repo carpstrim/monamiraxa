@@ -91,10 +91,17 @@ export default {
     }
   },
   created () {
+    const category = this.$route.query.category
+    const subcategory = this.$route.query.subcategory
     const productId = this.$route.query.id
-    const pageProduct = this.jsonAll.items.sty.find(el => el.id === productId)
 
-    this.currentProduct = pageProduct
+    if (subcategory) {
+      const pageProduct = this.jsonAll[category][subcategory].find(el => el.id === productId)
+      this.currentProduct = pageProduct
+    } else {
+      const pageProduct = this.jsonAll[category].find(el => el.id === productId)
+      this.currentProduct = pageProduct
+    }
   }
 }
 </script>

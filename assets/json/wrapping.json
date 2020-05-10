@@ -1,0 +1,61 @@
+{
+  "wrapping": [
+    {
+      "id": "6rywncws",
+      "name": "ラッピング",
+      "price": 1200,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "ラッピング 商品説明のサンプルテキストです。ラッピング 商品説明のサンプルテキストです。ラッピング 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "つの 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 5
+    },
+    {
+      "id": "kzhxuzdg",
+      "name": "ラッピング",
+      "price": 1800,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "ラッピング 商品説明のサンプルテキストです。ラッピング 商品説明のサンプルテキストです。ラッピング 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "つめ 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 0
+    },
+    {
+      "id": "m336jhf8",
+      "name": "ラッピング",
+      "price": 1200,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "ラッピング 商品説明のサンプルテキストです。ラッピング 商品説明のサンプルテキストです。ラッピング 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "たてがみ 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 0
+    },
+    {
+      "id": "bj45sxya",
+      "name": "ラッピング",
+      "price": 1200,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "ラッピング 商品説明のサンプルテキストです。ラッピング 商品説明のサンプルテキストです。ラッピング 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "つの 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 3
+    }
+  ]
+}
+

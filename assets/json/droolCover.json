@@ -1,0 +1,61 @@
+{
+  "droolcover": [
+    {
+      "id": "3i5h4au3",
+      "name": "よだれカバー",
+      "price": 1200,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "よだれカバー 商品説明のサンプルテキストです。よだれカバー 商品説明のサンプルテキストです。よだれカバー 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "つの 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 5
+    },
+    {
+      "id": "5ycewmx5",
+      "name": "よだれカバー",
+      "price": 1800,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "よだれカバー 商品説明のサンプルテキストです。よだれカバー 商品説明のサンプルテキストです。よだれカバー 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "つめ 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 0
+    },
+    {
+      "id": "a35gdgmy",
+      "name": "よだれカバー",
+      "price": 1200,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "よだれカバー 商品説明のサンプルテキストです。よだれカバー 商品説明のサンプルテキストです。よだれカバー 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "たてがみ 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 0
+    },
+    {
+      "id": "6wt39su9",
+      "name": "よだれカバー",
+      "price": 1200,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "よだれカバー 商品説明のサンプルテキストです。よだれカバー 商品説明のサンプルテキストです。よだれカバー 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "つの 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 3
+    }
+  ]
+}
+
