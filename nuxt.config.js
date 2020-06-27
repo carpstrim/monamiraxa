@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+require('dotenv').config()
+// const client = require('./plugins/contentful')
 
 export default {
   mode: 'spa',
@@ -32,7 +34,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/firebase'
+    '@/plugins/firebase',
+    '@/plugins/contentful'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -52,6 +55,11 @@ export default {
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources'
   ],
+  env: {
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID,
+    CTF_ACCESS_TOKEN: process.env.CTF_ACCESS_TOKEN
+  },
+
   styleResources: {
     scss: [
       '~assets/scss/main.scss'

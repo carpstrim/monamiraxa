@@ -29,11 +29,7 @@
         </v-list>
         <hr>
         <v-list>
-          <v-list-item
-            v-for="(item, i) in category"
-            :key="i"
-            color="#443947"
-          >
+          <v-list-item v-for="(item, i) in category" :key="i" color="#443947">
             <v-list-item-content>
               <v-list-item-title v-text="item.main" />
               <v-list v-if="item.sub">
@@ -62,11 +58,7 @@
         <nuxt />
       </v-content>
 
-      <v-footer
-        class="footer"
-        :fixed="fixed"
-        app
-      >
+      <v-footer class="footer" :fixed="fixed" app>
         <span>&copy; {{ new Date().getFullYear() }}</span>
       </v-footer>
     </main>
@@ -106,12 +98,7 @@ export default {
         {
           icon: 'mdi-circle-small',
           main: 'スタイ',
-          sub: [
-            'もくもく',
-            'たまご',
-            'ドーナツ',
-            'その他'
-          ]
+          sub: ['もくもく', 'たまご', 'ドーナツ', 'その他']
         },
         {
           main: 'よだれカバー'

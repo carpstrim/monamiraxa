@@ -1,3 +1,4 @@
+
 import sty from '~/assets/json/sty.json'
 import droolcover from '~/assets/json/droolcover.json'
 import gauzehandkerchief from '~/assets/json/gauzeHandkerchief.json'
@@ -18,6 +19,7 @@ export const state = () => ({
     ...wrapping,
     ...message
   }
+
 })
 
 export const getters = {

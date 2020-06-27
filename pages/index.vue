@@ -33,7 +33,7 @@
       <v-container class="pa-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
-            v-for="item in jsonAll.sty.mokumoku"
+            v-for="item in styMokumoku"
             :key="item.id"
             tag="li"
             cols="6"
@@ -62,7 +62,7 @@
       <v-container class="pa-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
-            v-for="item in jsonAll.sty.tamago"
+            v-for="item in styTamago"
             :key="item.id"
             tag="li"
             cols="6"
@@ -91,7 +91,7 @@
       <v-container class="pa-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
-            v-for="item in jsonAll.sty.donut"
+            v-for="item in styDonut"
             :key="item.id"
             tag="li"
             cols="6"
@@ -120,7 +120,7 @@
       <v-container class="pa-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
-            v-for="item in jsonAll.sty.other"
+            v-for="item in styOther"
             :key="item.id"
             tag="li"
             cols="6"
@@ -324,19 +324,48 @@
 
 <script>
 import Item from '~/components/molecules/Item'
+import client from '~/plugins/contentful'
 
 export default {
   components: {
     Item
   },
-  asyncData ({ store }) {
+  async asyncData ({ store }) {
     const jsonAll = store.getters['json/getAll']
-    return { jsonAll }
+    const sty = jsonAll.sty
+    const styMokumoku = sty.filter(e => e.typeDetail === 'mokumoku')
+    const styTamago = sty.filter(e => e.typeDetail === 'tamago')
+    const styDonut = sty.filter(e => e.typeDetail === 'donut')
+    const styOther = sty.filter(e => e.typeDetail === 'other')
+
+    const products = await client
+      .getEntries({
+        content_type: 'products'
+      })
+      .then((e) => {
+        return e.items.map((item) => {
+          return item.fields
+        })
+      })
+
+    return {
+      jsonAll,
+      products,
+      styMokumoku,
+      styTamago,
+      styDonut,
+      styOther
+    }
   },
+
   computed: {
     limitMessage () {
       return this.jsonAll.message.slice(0, 3)
     }
+  },
+  mounted () {
+    console.log({ products: this.products })
+    console.log({ jsonAll: this.jsonAll })
   }
 }
 </script>
@@ -351,5 +380,4 @@ export default {
   list-style: none;
   padding-left: 0;
 }
-
 </style>
