@@ -29,6 +29,15 @@ $easeInOutExpo: cubic-bezier(1, 0, 0, 1) !default;
 $easeInOutCirc: cubic-bezier(0.785, 0.135, 0.15, 0.86) !default;
 $easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55) !default;
 
+// Vuetify Breakpoint
+$breakpoints: (
+  xs: 0,
+  sm: 600px,
+  md: 960px,
+  lg: 1264px,
+  xl: 1904px
+) !default;
+
 // $color-main: hsl(57, 97, 86);
 $color-main: #fffde7 !important;
 $color-default: hsl(287, 11, 25)!important;
