@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <main class="main">
+    <main class="base">
       <v-content>
         <nuxt />
       </v-content>
@@ -15,3 +15,10 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+.base {
+  height: 100%;
+  background: top left / 360px repeat url(~assets/img/bg_flower_orange.png)!important;
+}
+</style>
