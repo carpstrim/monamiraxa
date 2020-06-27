@@ -1,6 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
-require("dotenv").config()
-const client = require("./plugins/contentful")
+require('dotenv').config()
+// const client = require('./plugins/contentful')
 
 export default {
   mode: 'spa',
@@ -52,11 +52,18 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/style-resources'
   ],
   env: {
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
-    CTF_ACCESS_TOKEN: process.env.CTF_ACCESS_TOKEN,
+    CTF_ACCESS_TOKEN: process.env.CTF_ACCESS_TOKEN
+  },
+
+  styleResources: {
+    scss: [
+      '~assets/scss/main.scss'
+    ]
   },
   /*
   ** Axios module configuration
@@ -71,12 +78,11 @@ export default {
   vuetify: {
     customVariables: ['~/assets/scss/variables.scss'],
     theme: {
-      dark: false,
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
+        light: {
+          primary: colors.yellow.lighten5,
+          secondary: colors.brown.darken4,
           accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
@@ -94,7 +100,7 @@ export default {
      */
     // NOTE: これがないとnuxtとfirebaseが共存できない（core-js2とcore-js3の共存）
     babel: {
-      presets({ isServer }) {
+      presets ({ isServer }) {
         return [
           [
             require.resolve('@nuxt/babel-preset-app'),
@@ -106,19 +112,7 @@ export default {
           ]
         ]
       }
-    },
-    extend(config, ctx) {
-      config.node = {
-        fs: 'empty'
-      }
-      if (ctx.isServer) {
-        // add for vuetify
-        config.externals = [
-          nodeExternals({
-            whitelist: [/^vuetify/]
-          })
-        ]
-      }
     }
+
   }
 }

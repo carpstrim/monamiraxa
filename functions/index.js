@@ -11,6 +11,6 @@ const admin = require('firebase-admin')
 
 admin.initializeApp()
 
-exports.test = functions.https.onCall(async (data, context) => {
+exports.test = functions.https.onCall((data, context) => {
   console.log('test')
 })

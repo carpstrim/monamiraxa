@@ -1,0 +1,24 @@
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.main {
+  color: $color-default;
+  height: 100%;
+  background-color: $color-main;
+}
+
+.drawer {
+  // color: $color-default;
+  height: 100%;
+  background: top left / 360px repeat url('~assets/img/bg_flower_orange.png');
+}
+
+.message {
+  background: top left / 80px repeat url('~assets/img/bg_cork.png');
+}
+
+.footer {
+  background: top left / 45px repeat url('~assets/img/bg_block.png');
+}
