@@ -24,14 +24,12 @@ export default {
 
 <style scoped lang="scss">
 .item {
-  $radius: 10px;
-
   position: relative;
   list-style: none;
   margin-bottom: 10px;
   padding-left: 0;
   width: 100%;
-  border-radius: $radius;
+  border-radius: $border-radius;
   overflow: hidden;
   color: $color-default;
   text-decoration: none;
@@ -39,7 +37,7 @@ export default {
 
   img {
     width: 100%;
-    border-radius: $radius;
+    border-radius: $border-radius;
   }
 
   &:hover {
