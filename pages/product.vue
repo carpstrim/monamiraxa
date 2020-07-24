@@ -2,23 +2,13 @@
   <v-container color="yellow lighten-5">
     <section>
       <v-container class="pa-0">
-        <v-row
-          dense
-        >
+        <v-row dense>
           <!-- TODO: カルーセルに差し替え予定 -->
-          <v-col
-            cols="12"
-            xs="12"
-            sm="6"
-          >
+          <v-col cols="12" xs="12" sm="6">
             <h2>{{ currentProduct.name }}</h2>
-            <img :src="currentProduct.imgPath" alt="">
+            <img :src="currentProduct.imgPath" alt>
           </v-col>
-          <v-col
-            cols="12"
-            xs="12"
-            sm="6"
-          >
+          <v-col cols="12" xs="12" sm="6">
             <p>{{ currentProduct.description }}</p>
             <dl>
               <dt class="u-inline u-va-top">
@@ -81,6 +71,7 @@
 export default {
   asyncData ({ store }) {
     const jsonAll = store.getters['json/getAll']
+
     return { jsonAll }
   },
   data () {
@@ -92,16 +83,20 @@ export default {
   },
   created () {
     const category = this.$route.query.category
-    const subcategory = this.$route.query.subcategory
+    // const subcategory = this.$route.query.subcategory;
     const productId = this.$route.query.id
 
-    if (subcategory) {
-      const pageProduct = this.jsonAll[category][subcategory].find(el => el.id === productId)
-      this.currentProduct = pageProduct
-    } else {
-      const pageProduct = this.jsonAll[category].find(el => el.id === productId)
-      this.currentProduct = pageProduct
-    }
+    /* if (subcategory) {
+      const pageProduct = this.jsonAll[category][subcategory].find(
+        (el) => el.id === productId
+      );
+      this.currentProduct = pageProduct;
+    } else { */
+    const pageProduct = this.jsonAll[category].find(
+      el => el.id === productId
+    )
+    this.currentProduct = pageProduct
+    // }
   }
 }
 </script>
@@ -116,5 +111,4 @@ img {
   border: 1px solid $color-default;
   border-radius: 5px;
 }
-
 </style>
