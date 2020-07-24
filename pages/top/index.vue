@@ -1,14 +1,14 @@
 <template>
   <div class="top">
     <n-link to="/">
-    <div class="top_container">
-      <figure class="top_figure">
-        <img src="~/assets/img/top_door_open.png" alt>
-      </figure>
-      <p>mon ami raxa (ﾓﾅﾐﾗｼｬ)は<br>手作りベビー用品のお店です。</p>
-      <p>普段使いにも、おめかしにも、プレゼントにも。</p>
-      <p>大切な赤ちゃんの身の周りを彩る<br>アイテムをお届けします。</p>
-    </div>
+      <div class="top_container">
+        <figure class="top_figure">
+          <img src="~/assets/img/top_door_open.png" alt>
+        </figure>
+        <p>mon ami raxa (ﾓﾅﾐﾗｼｬ)は<br>手作りベビー用品のお店です。</p>
+        <p>普段使いにも、おめかしにも、プレゼントにも。</p>
+        <p>大切な赤ちゃんの身の周りを彩る<br>アイテムをお届けします。</p>
+      </div>
     </n-link>
   </div>
 </template>
