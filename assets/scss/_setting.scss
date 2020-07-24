@@ -38,6 +38,22 @@ $breakpoints: (
   xl: 1904px
 ) !default;
 
+$root-font-sizes: (
+  xs: 2.6666667vw,
+  sm: 2.6666667vw,
+  md: 10px,
+  lg: 10px,
+  xl: 10px
+) !default;
+
+$base-font-sizes: (
+  xs: 1.2rem,
+  sm: 1.2rem,
+  md: 1.4rem,
+  lg: 1.4rem,
+  xl: 1.4rem
+) !default;
+
 // $color-main: hsl(57, 97, 86);
 $color-main: #fffde7 !important;
 $color-default: hsl(287, 11, 25)!important;

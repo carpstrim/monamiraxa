@@ -92,8 +92,11 @@ ol {
 }
 
 .flow {
-  width: 900px;
   margin: 0 auto;
+
+  @include breakpoint-up(md) {
+    width: 900px;
+  }
 }
 
 .flow_item {
