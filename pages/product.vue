@@ -6,7 +6,7 @@
           <!-- TODO: カルーセルに差し替え予定 -->
           <v-col cols="12" xs="12" sm="6">
             <h2>{{ currentProduct.name }}</h2>
-            <img :src="currentProduct.imgPath" alt>
+            <v-img :src="currentProduct.imgPath" />
           </v-col>
           <v-col cols="12" xs="12" sm="6">
             <p>{{ currentProduct.description }}</p>
@@ -102,10 +102,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-img {
-  width: 100%;
-}
-
 .order_quantity {
   background-color: white;
   border: 1px solid $color-default;
