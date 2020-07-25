@@ -1,0 +1,61 @@
+{
+  "niginigi": [
+    {
+      "id": "i6krfhjh",
+      "name": "にぎにぎ",
+      "price": 1200,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "にぎにぎ 商品説明のサンプルテキストです。にぎにぎ 商品説明のサンプルテキストです。にぎにぎ 商品説明のサンプルテキストです。にぎにぎ 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "つの 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 5
+    },
+    {
+      "id": "553dixet",
+      "name": "にぎにぎ",
+      "price": 1800,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "にぎにぎ 商品説明のサンプルテキストです。にぎにぎ 商品説明のサンプルテキストです。にぎにぎ 商品説明のサンプルテキストです。にぎにぎ 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "つめ 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 0
+    },
+    {
+      "id": "2twx2mng",
+      "name": "にぎにぎ",
+      "price": 1200,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "にぎにぎ 商品説明のサンプルテキストです。にぎにぎ 商品説明のサンプルテキストです。にぎにぎ 商品説明のサンプルテキストです。にぎにぎ 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "たてがみ 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 0
+    },
+    {
+      "id": "wbsm99fc",
+      "name": "にぎにぎ",
+      "price": 1200,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "にぎにぎ 商品説明のサンプルテキストです。にぎにぎ 商品説明のサンプルテキストです。にぎにぎ 商品説明のサンプルテキストです。にぎにぎ 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "つの 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 3
+    }
+  ]
+}
+

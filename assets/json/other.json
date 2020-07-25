@@ -1,0 +1,61 @@
+{
+  "other": [
+    {
+      "id": "n6rsz8yg",
+      "name": "その他",
+      "price": 1200,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "その他 商品説明のサンプルテキストです。その他 商品説明のサンプルテキストです。その他 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "つの 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 5
+    },
+    {
+      "id": "jp8ka824",
+      "name": "その他",
+      "price": 1800,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "その他 商品説明のサンプルテキストです。その他 商品説明のサンプルテキストです。その他 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "つめ 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 0
+    },
+    {
+      "id": "btgaefuf",
+      "name": "その他",
+      "price": 1200,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "その他 商品説明のサンプルテキストです。その他 商品説明のサンプルテキストです。その他 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "たてがみ 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 0
+    },
+    {
+      "id": "4jyhpft3",
+      "name": "その他",
+      "price": 1200,
+      "imgPath": "_nuxt/assets/img/dummy_square.jpg",
+      "description": "その他 商品説明のサンプルテキストです。その他 商品説明のサンプルテキストです。その他 商品説明のサンプルテキストです。",
+      "size": {
+        "vertical": 30,
+        "horizontal": 40,
+        "neck": 50
+      },
+      "material": "つの 表・裏布 ダブルガーゼ 中布 コットンフランネル プラスナップボタン",
+      "stock": 3
+    }
+  ]
+}
+

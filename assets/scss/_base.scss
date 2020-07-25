@@ -1,0 +1,47 @@
+:root {
+  @each $breakpoint in map-keys($breakpoints) {
+    @include breakpoint-up($breakpoint) {
+      @each $value in map-get($root-font-sizes, $breakpoint) {
+        font-size: $value;
+      }
+    }
+  }
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.main {
+  color: $color-default;
+  height: 100%;
+  background-color: $color-main;
+}
+
+.drawer {
+  // color: $color-default;
+  position: relative;
+  z-index: 0;
+  height: 100%;
+  background: top left / 500px repeat url('~assets/img/bg_products.png');
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    opacity: 0.6;
+  }
+}
+
+.message {
+  background: top left / 80px repeat url('~assets/img/bg_cork.png');
+}
+
+.footer {
+  background: top left / 45px repeat url('~assets/img/bg_block.png');
+}
