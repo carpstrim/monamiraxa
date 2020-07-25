@@ -6,7 +6,7 @@
           <!-- TODO: カルーセルに差し替え予定 -->
           <v-col cols="12" xs="12" sm="6">
             <h2>{{ currentProduct.name }}</h2>
-            <v-img :src="currentProduct.imgPath" />
+            <v-img :src="currentProduct.images[0].fields.file.url" />
           </v-col>
           <v-col cols="12" xs="12" sm="6">
             <p>{{ currentProduct.description }}</p>
@@ -16,9 +16,9 @@
               </dt>
               <dd class="u-inline">
                 <ul>
-                  <li>約 {{ currentProduct.size.vertical }} cm</li>
-                  <li>約 {{ currentProduct.size.horizontal }} cm</li>
-                  <li>約 {{ currentProduct.size.neck }} cm</li>
+                  <li>約 {{ currentProduct.vertical }} cm</li>
+                  <li>約 {{ currentProduct.horizontal }} cm</li>
+                  <li>約 {{ currentProduct.neck }} cm</li>
                 </ul>
               </dd>
             </dl>
@@ -68,11 +68,20 @@
 </template>
 
 <script>
-export default {
-  asyncData ({ store }) {
-    const jsonAll = store.getters['json/getAll']
+import client from '~/plugins/contentful'
 
-    return { jsonAll }
+export default {
+  async asyncData ({ query }) {
+    const currentProduct = await client
+      .getEntries({
+        content_type: 'products',
+        'fields.id': query.id
+      })
+      .then((e) => {
+        return e.items[0].fields
+      })
+
+    return { currentProduct }
   },
   data () {
     return {
@@ -81,22 +90,8 @@ export default {
       query: {}
     }
   },
-  created () {
-    const category = this.$route.query.category
-    // const subcategory = this.$route.query.subcategory;
-    const productId = this.$route.query.id
-
-    /* if (subcategory) {
-      const pageProduct = this.jsonAll[category][subcategory].find(
-        (el) => el.id === productId
-      );
-      this.currentProduct = pageProduct;
-    } else { */
-    const pageProduct = this.jsonAll[category].find(
-      el => el.id === productId
-    )
-    this.currentProduct = pageProduct
-    // }
+  mounted () {
+    console.log({ currentProduct: this.currentProduct })
   }
 }
 </script>

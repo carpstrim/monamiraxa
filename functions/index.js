@@ -41,7 +41,7 @@ exports.contact = functions.https.onCall((data, context) => {
   const { name, mail, title, content } = data
 
   const returnText =
-    `${name}様\n\n※このメールは、ハンドメイドベビーグッズショップ、mon ami raxaでお問い合わせをされた際に自動的に送信されます。` +
+    `${name}様\n\n※このメールは、ハンドメイドベビーグッズショップ、mon ami raxaでお問い合わせをされた際に自動的に送信されます。\n\n` +
     'この度はお問い合わせをいただき誠にありがとうございます。\n\n' +
     '以下の内容でお問い合わせを受け付けました。\n' +
     '後ほど、メールにてご回答させていただきますので、今しばらくお待ちください。\n' +
