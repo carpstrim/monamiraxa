@@ -58,8 +58,38 @@
         <nuxt />
       </v-content>
 
-      <v-footer class="footer" :fixed="fixed" app>
-        <span>&copy; {{ new Date().getFullYear() }}</span>
+      <v-footer class="footer d-flex justify-center">
+        <v-btn text>
+          ホーム
+        </v-btn>
+        <v-divider class="mt-1 mb-1" vertical />
+        <v-btn text>
+          お店のこと
+        </v-btn>
+        <v-divider class="mt-1 mb-1" vertical />
+        <v-btn text>
+          お買い物の流れ
+        </v-btn>
+        <v-divider class="mt-1 mb-1" vertical />
+        <v-btn text>
+          お問い合わせ
+        </v-btn>
+        <v-divider class="mt-1 mb-1" vertical />
+        <v-btn text>
+          送料について
+        </v-btn>
+        <v-divider class="mt-1 mb-1" vertical />
+        <v-btn text>
+          お支払いについて
+        </v-btn>
+        <v-divider class="mt-1 mb-1" vertical />
+        <v-btn text>
+          プライバシーポリシー
+        </v-btn>
+        <v-divider class="mt-1 mb-1" vertical />
+        <v-btn text>
+          特定商取引法に基づく表記
+        </v-btn>
       </v-footer>
     </main>
   </v-app>

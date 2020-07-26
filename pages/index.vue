@@ -1,14 +1,8 @@
 <template>
   <section>
-    <v-parallax src="img/dummy_mainvisual.jpg">
-      <v-row align="center" justify="center">
-        <v-col class="text-center" cols="12">
-          <h1 class="display-1 font-weight-thin mb-4">
-            mon ami raxa
-          </h1>
-        </v-col>
-      </v-row>
-    </v-parallax>
+    <div class="d-flex justify-center">
+      <v-img :src="banner" max-width="650px" />
+    </div>
 
     <v-container v-if="message.length > 0 ">
       <v-card class="message" color="grey lighten-5" elevation="0">
@@ -329,6 +323,8 @@
 import Item from '~/components/molecules/Item'
 import client from '~/plugins/contentful'
 
+import banner from '~/assets/img/home.png'
+
 export default {
   components: {
     Item
@@ -392,6 +388,9 @@ export default {
       wrapping,
       message
     }
+  },
+  data () {
+    return { banner }
   },
   computed: {
     limitMessage () {
