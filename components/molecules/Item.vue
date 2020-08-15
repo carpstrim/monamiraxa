@@ -1,8 +1,14 @@
 <template>
   <ul class="item" :class="{ sold: is_sold }">
-    <li><slot name="imgPath" /></li>
-    <li><slot name="name" /></li>
-    <li><slot name="price" /></li>
+    <li>
+      <slot name="imgPath" />
+    </li>
+    <li>
+      <slot name="name" />
+    </li>
+    <li>
+      <slot name="price" />
+    </li>
   </ul>
 </template>
 
@@ -29,7 +35,7 @@ export default {
   margin-bottom: 10px;
   padding-left: 0;
   width: 100%;
-  border-radius: $border-radius;
+  //-radius: $border-radius;
   overflow: hidden;
   color: $color-default;
   text-decoration: none;
@@ -37,7 +43,7 @@ export default {
 
   img {
     width: 100%;
-    border-radius: $border-radius;
+    //border-radius: $border-radius;
   }
 
   &:hover {
@@ -49,7 +55,7 @@ export default {
   position: relative;
 
   &::before {
-    content: 'sold';
+    content: "sold";
     display: block;
     position: absolute;
     top: -40px;

@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <section>
+    <section style="max-width:800px">
       <h1 class="mb-7">
         お問い合わせ
       </h1>

@@ -35,7 +35,8 @@ export default {
   */
   plugins: [
     '@/plugins/firebase',
-    '@/plugins/contentful'
+    '@/plugins/contentful',
+    { src: '@/plugins/storage', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules

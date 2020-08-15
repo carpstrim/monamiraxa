@@ -100,6 +100,6 @@ export default {
 .order_quantity {
   background-color: white;
   border: 1px solid $color-default;
-  border-radius: 5px;
+  //border-radius: 5px;
 }
 </style>

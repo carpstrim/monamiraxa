@@ -1,8 +1,10 @@
 <template>
   <section>
-    <div class="d-flex justify-center">
-      <v-img :src="banner" max-width="650px" />
-    </div>
+    <v-row class="d-flex justify-center">
+      <v-col cols="12" md="6">
+        <v-img :src="banner" contain />
+      </v-col>
+    </v-row>
 
     <v-container v-if="message.length > 0 ">
       <v-card class="message" color="grey lighten-5" elevation="0">
@@ -41,7 +43,12 @@
             <n-link :to="{ path: '/product/?category=sty&subcategory=mokumoku&id=' + item.id }">
               <Item :stock="item.stock">
                 <template #imgPath>
-                  <img :src="item.images[0].fields.file.url" alt>
+                  <v-img
+                    class="rounded-lg"
+                    aspect-ratio="1"
+                    :src="item.images[0].fields.file.url"
+                    alt
+                  />
                 </template>
                 <template #name>
                   {{ item.name }}
@@ -69,8 +76,13 @@
           >
             <n-link :to="{ path: '/product/?category=sty&subcategory=tamago&id=' + item.id }">
               <Item :stock="item.stock">
-                <template #imgPath>
-                  <img :src="item.images[0].fields.file.url" alt>
+                <template #imgPah>
+                  <v-img
+                    class="rounded-lg"
+                    aspect-ratio="1"
+                    :src="item.images[0].fields.file.url"
+                    alt
+                  />
                 </template>
                 <template #name>
                   {{ item.name }}
@@ -99,13 +111,21 @@
             <n-link :to="{ path: '/product/?category=sty&subcategory=donut&id=' + item.id }">
               <Item :stock="item.stock">
                 <template #imgPath>
-                  <img :src="item.images[0].fields.file.url" alt>
+                  <v-img
+                    class="rounded-lg"
+                    aspect-ratio="1"
+                    :src="item.images[0].fields.file.url"
+                    alt
+                  />
                 </template>
                 <template #name>
                   {{ item.name }}
                 </template>
                 <template #price>
                   {{ item.price }} 円
+                  <p v-if="item.stock * 1 <= 0" class="red--text font-weight-bold">
+                    sold out
+                  </p>
                 </template>
               </Item>
             </n-link>
@@ -128,7 +148,12 @@
             <n-link :to="{ path: '/product/?category=sty&subcategory=other&id=' + item.id }">
               <Item :stock="item.stock">
                 <template #imgPath>
-                  <img :src="item.images[0].fields.file.url" alt>
+                  <v-img
+                    class="rounded-lg"
+                    aspect-ratio="1"
+                    :src="item.images[0].fields.file.url"
+                    alt
+                  />
                 </template>
                 <template #name>
                   {{ item.name }}
@@ -157,13 +182,21 @@
             <n-link :to="{ path: '/product/?category=droolcover&id=' + item.id }">
               <Item :stock="item.stock">
                 <template #imgPath>
-                  <img :src="item.images[0].fields.file.url" alt>
+                  <v-img
+                    class="rounded-lg"
+                    aspect-ratio="1"
+                    :src="item.images[0].fields.file.url"
+                    alt
+                  />
                 </template>
                 <template #name>
                   {{ item.name }}
                 </template>
                 <template #price>
                   {{ item.price }} 円
+                  <v-btn v-if="item.stock * 1 <= 0" small>
+                    sold out
+                  </v-btn>
                 </template>
               </Item>
             </n-link>
@@ -186,7 +219,12 @@
             <n-link :to="{ path: '/product/?category=gauzehandkerchief&id=' + item.id }">
               <Item :stock="item.stock">
                 <template #imgPath>
-                  <img :src="item.images[0].fields.file.url" alt>
+                  <v-img
+                    class="rounded-lg"
+                    aspect-ratio="1"
+                    :src="item.images[0].fields.file.url"
+                    alt
+                  />
                 </template>
                 <template #name>
                   {{ item.name }}
@@ -215,7 +253,12 @@
             <n-link :to="{ path: '/product/?category=niginigi&id=' + item.id }">
               <Item :stock="item.stock">
                 <template #imgPath>
-                  <img :src="item.images[0].fields.file.url" alt>
+                  <v-img
+                    class="rounded-lg"
+                    aspect-ratio="1"
+                    :src="item.images[0].fields.file.url"
+                    alt
+                  />
                 </template>
                 <template #name>
                   {{ item.name }}
@@ -244,7 +287,12 @@
             <n-link :to="{ path: '/product/?category=nametag&id=' + item.id }">
               <Item :stock="item.stock">
                 <template #imgPath>
-                  <img :src="item.images[0].fields.file.url" alt>
+                  <v-img
+                    class="rounded-lg"
+                    aspect-ratio="1"
+                    :src="item.images[0].fields.file.url"
+                    alt
+                  />
                 </template>
                 <template #name>
                   {{ item.name }}
@@ -273,7 +321,12 @@
             <n-link :to="{ path: '/product/?category=other&id=' + item.id }">
               <Item :stock="item.stock">
                 <template #imgPath>
-                  <img :src="item.images[0].fields.file.url" alt>
+                  <v-img
+                    class="rounded-lg"
+                    aspect-ratio="1"
+                    :src="item.images[0].fields.file.url"
+                    alt
+                  />
                 </template>
                 <template #name>
                   {{ item.name }}
@@ -302,7 +355,12 @@
             <n-link :to="{ path: '/product/?category=wrapping&id=' + item.id }">
               <Item :stock="item.stock">
                 <template #imgPath>
-                  <img :src="item.images[0].fields.file.url" alt>
+                  <v-img
+                    class="rounded-lg"
+                    aspect-ratio="1"
+                    :src="item.images[0].fields.file.url"
+                    alt
+                  />
                 </template>
                 <template #name>
                   {{ item.name }}
@@ -332,12 +390,25 @@ export default {
   async asyncData ({ store }) {
     const products = await client
       .getEntries({
-        content_type: 'products'
+        content_type: 'products',
+        order: 'fields.order'
       })
       .then((e) => {
-        return e.items.map((item) => {
-          return item.fields
-        })
+        return e.items
+          .map((item) => {
+            return item.fields
+          })
+          .sort((a, b) => {
+            const abool = a.stock <= 0
+            const bbool = b.stock <= 0
+            if ((abool && bbool) || (!abool && !bbool)) {
+              return 0
+            }
+            if (abool) {
+              return 1
+            }
+            return -1
+          })
       })
 
     const sty = products.filter(e => e.productType.fields.slug === 'sty')

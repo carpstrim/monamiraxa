@@ -1386,7 +1386,7 @@
     glob-all "^3.1.0"
     sass-resources-loader "^2.0.0"
 
-"@nuxtjs/vuetify@^1.0.0":
+"@nuxtjs/vuetify@^1.11.2":
   version "1.11.2"
   resolved "https://registry.yarnpkg.com/@nuxtjs/vuetify/-/vuetify-1.11.2.tgz#fefa861d98c021e10dd579a5b91b34b3fb49dc99"
   integrity sha512-8+k/PQG37OAoXvXgKE+BkBQXaoBCz9odK8oPYA4lwmxQ0ekHnh4PFrU/6Fr+OeVHbQbynbuMZnkF9aWxDsTqug==
@@ -2574,10 +2574,10 @@ check-types@^8.0.3:
   resolved "https://registry.yarnpkg.com/check-types/-/check-types-8.0.3.tgz#3356cca19c889544f2d7a95ed49ce508a0ecf552"
   integrity sha512-YpeKZngUmG65rLudJ4taU7VLkOCTMhNl/u4ctNC56LQS/zJTyNH0Lrtwm1tfTsbLlwvlfsA2d1c8vCf/Kh2KwQ==
 
-"chokidar@>=2.0.0 <4.0.0", chokidar@^3.3.1, chokidar@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.4.0.tgz#b30611423ce376357c765b9b8f904b9fba3c0be8"
-  integrity sha512-aXAaho2VJtisB/1fg1+3nlLJqGOuewTzQpd/Tz0yTg2R0e4IGtshYvtjowyEumcBv2z+y4+kc75Mz7j5xJskcQ==
+"chokidar@>=2.0.0 <4.0.0":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.4.2.tgz#38dc8e658dec3809741eb3ef7bb0a47fe424232d"
+  integrity sha512-IZHaDeBeI+sZJRX7lGcXsdzgvZqKv6sECqsbErJA4mHWfpRrD8B97kSFN4cQz6nGBGiuFia1MKR4d6c1o8Cv7A==
   dependencies:
     anymatch "~3.1.1"
     braces "~3.0.2"
@@ -2607,6 +2607,21 @@ chokidar@^2.1.8:
     upath "^1.1.1"
   optionalDependencies:
     fsevents "^1.2.7"
+
+chokidar@^3.3.1, chokidar@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.4.0.tgz#b30611423ce376357c765b9b8f904b9fba3c0be8"
+  integrity sha512-aXAaho2VJtisB/1fg1+3nlLJqGOuewTzQpd/Tz0yTg2R0e4IGtshYvtjowyEumcBv2z+y4+kc75Mz7j5xJskcQ==
+  dependencies:
+    anymatch "~3.1.1"
+    braces "~3.0.2"
+    glob-parent "~5.1.0"
+    is-binary-path "~2.1.0"
+    is-glob "~4.0.1"
+    normalize-path "~3.0.0"
+    readdirp "~3.4.0"
+  optionalDependencies:
+    fsevents "~2.1.2"
 
 chownr@^1.1.1, chownr@^1.1.2:
   version "1.1.4"
@@ -8043,9 +8058,9 @@ sass-resources-loader@^2.0.0:
     loader-utils "^1.0.4"
 
 sass@^1.26.5:
-  version "1.26.7"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.26.7.tgz#d3c9f3dd9771632bfb60af8746c308da3765166d"
-  integrity sha512-xgNazdkr6yvgHEfNaOjKtZzhDZmKYMCmoRKMPrTDo7YvjaITIzU2DDYsIUuN/atAg7/JOxPeCQHH7TtCo5Tq2g==
+  version "1.26.10"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.26.10.tgz#851d126021cdc93decbf201d1eca2a20ee434760"
+  integrity sha512-bzN0uvmzfsTvjz0qwccN1sPm2HxxpNI/Xa+7PlUEMS+nQvbyuEK7Y0qFqxlPHhiNHb1Ze8WQJtU31olMObkAMw==
   dependencies:
     chokidar ">=2.0.0 <4.0.0"
 
@@ -9310,17 +9325,17 @@ vue@^2.6.11:
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
 
 vuetify-loader@^1.4.3:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/vuetify-loader/-/vuetify-loader-1.4.4.tgz#f31196c631f259f3e42cc1a892ed8ea4594a42ee"
-  integrity sha512-ryEtVZ/t+zvTM9UscEX5mWsbTOH5HGWITxlysYkkXtcgzgV21t7rRLHBhReH8oMBYddAij4AOosimhcfKnxFHQ==
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/vuetify-loader/-/vuetify-loader-1.6.0.tgz#05df0805b3ab2ff0de198109d34f9da3f69da667"
+  integrity sha512-1bx3YeZ712dT1+QMX+XSFlP0O5k5O5Ui9ysBBmUZ9bWkAEHWZJQI9soI+qG5qmeFxUC0L9QYMCIKP0hOL/pf3Q==
   dependencies:
     file-loader "^4.0.0"
     loader-utils "^1.2.0"
 
 vuetify@^2:
-  version "2.2.30"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.2.30.tgz#976329c52b57d5cf360bd983636541b55ae80044"
-  integrity sha512-hCVzhXXBT91wqM+K8gBVmrHtiLMhk2EvkwpHNq5eHDJVbJYsUGPaUbMZHnmnvFnhegm6GyAnd9mu7pst2Mn1zQ==
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.3.8.tgz#4b468f0eaa780107d6a89249856e46f96e1e1bda"
+  integrity sha512-T754w4jV3eeuEwEfRTpHdlo76ZRUVTBeMMzVyqSEr61AfhDSYf9rJfHOlhfXG4aaQbZ34dRR48bzRiS4ICz2fQ==
 
 vuex@^3.1.3:
   version "3.4.0"

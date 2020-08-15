@@ -5,12 +5,22 @@
         v-model="drawer"
         :mini-variant="miniVariant"
         :clipped="clipped"
-        fixed
+        stateless
         app
+        fixed
         color="primary"
         class="drawer"
+        :temporary="temporary"
+        width="220"
       >
         <v-list>
+          <v-list-item v-if="temporary" class="d-flex justify-end mr-n8">
+            <v-list-item-action>
+              <v-icon @click="drawer = false">
+                mdi-arrow-left
+              </v-icon>
+            </v-list-item-action>
+          </v-list-item>
           <v-list-item
             v-for="(item, i) in items"
             :key="i"
@@ -43,7 +53,7 @@
       </v-navigation-drawer>
       <v-app-bar
         :clipped-left="clipped"
-        fixedd
+        fixed
         app
         class="header"
         elevation="2"
@@ -58,7 +68,7 @@
         <nuxt />
       </v-content>
 
-      <v-footer class="footer d-flex justify-center">
+      <v-footer app class="footer d-flex justify-center">
         <v-btn text>
           ホーム
         </v-btn>
@@ -101,7 +111,8 @@ export default {
     return {
       clipped: false,
       drawer: false,
-      fixed: false,
+      permanent: false,
+      fixed: true,
       items: [
         {
           icon: 'mdi-store-outline',
@@ -154,6 +165,14 @@ export default {
       rightDrawer: false,
       title: 'mon ami raxa'
     }
+  },
+  computed: {
+    temporary () {
+      return this.$vuetify.breakpoint.smAndDown
+    }
+  },
+  created () {
+    this.drawer = !this.$vuetify.breakpoint.smAndDown
   }
 }
 </script>
