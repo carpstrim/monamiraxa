@@ -2,62 +2,82 @@
   <v-container color="yellow lighten-5">
     <section>
       <v-container class="pa-0">
-        <v-row dense>
+        <h2 class="mt-3 ml-3">
+          {{ currentProduct.name }}
+        </h2>
+        <v-row class="mt-2" dense>
           <!-- TODO: カルーセルに差し替え予定 -->
-          <v-col cols="12" xs="12" sm="6">
-            <h2>{{ currentProduct.name }}</h2>
-            <v-img :src="currentProduct.images[0].fields.file.url" />
+          <v-col style="max-wispanh:400px" cols="12" xs="12" sm="6">
+            <v-carousel
+              v-model="nowImageNum"
+              style="max-height:400px; max-wispanh:400px"
+              class="pa-3"
+              hide-delimiters
+              :show-arrows="false"
+            >
+              <v-carousel-item
+                v-for="(image,n) in currentProduct.images"
+                :key="'image_' + n"
+                :src="image.fields.file.url"
+                aspect-ratio="1"
+                cover
+              />
+            </v-carousel>
+            <v-row class="mt-3" no-gutters>
+              <v-col
+                v-for="(image,m) in currentProduct.images"
+                :key="'imageSelect_' + m"
+                class="pl-3"
+                cols="2"
+                xs="2"
+              >
+                <v-card @click="nowImageNum = m">
+                  <v-img :src="image.fields.file.url" aspect-ratio="1" />
+                </v-card>
+              </v-col>
+            </v-row>
           </v-col>
           <v-col cols="12" xs="12" sm="6">
-            <p>{{ currentProduct.description }}</p>
-            <dl>
-              <dt class="u-inline u-va-top">
-                サイズ：
-              </dt>
-              <dd class="u-inline">
+            <p class="mt-3">
+              {{ currentProduct.description }}
+            </p>
+            <p>
+              <span class="u-va-top">サイズ：</span>
+              <span class>
                 <ul>
                   <li>約 {{ currentProduct.vertical }} cm</li>
                   <li>約 {{ currentProduct.horizontal }} cm</li>
                   <li>約 {{ currentProduct.neck }} cm</li>
                 </ul>
-              </dd>
-            </dl>
+              </span>
+            </p>
 
-            <dl>
-              <dt class="u-inline">
-                素材：
-              </dt>
-              <dd class="u-inline">
-                {{ currentProduct.material }}
-              </dd>
-            </dl>
-            <hr>
-            <dl>
-              <dt class="u-inline">
-                価格：
-              </dt>
-              <dd class="u-inline">
-                {{ currentProduct.price }}
-              </dd>
-            </dl>
-            <dl>
-              <dt class="u-inline">
-                在庫数：
-              </dt>
-              <dd class="u-inline">
-                {{ currentProduct.stock }}
-              </dd>
-            </dl>
-            <dl>
-              <dt class="u-inline">
-                注文数：
-              </dt>
-              <dd class="u-inline order_quantity">
-                <input type="number" name="order_quantity" min="1" max="100" required>
-              </dd>
-            </dl>
+            <p>
+              <span class>素材：</span>
+              <span class>{{ currentProduct.material }}</span>
+            </p>
+            <v-divider />
+            <span class>価格：</span>
+            <span class>{{ currentProduct.price }}円</span>
+            <br>
+            <div v-if="currentProduct.stock > 0">
+              <span class>在庫数：</span>
+              <span class>{{ currentProduct.stock }}</span>
+            </div>
+            <div v-else class="red--text font-weight-bold">
+              SOLD OUT
+            </div>
 
-            <v-btn color="light-blue darken-1" dark block>
+            <div v-if="currentProduct.stock > 0" style="width:150px">
+              <v-select dense placeholder="購入数を選択" :items="items" />
+            </div>
+
+            <v-btn
+              :disabled="!(currentProduct.stock > 0)"
+              color="light-blue darken-1"
+              dark
+              block
+            >
               カートに入れる
             </v-btn>
           </v-col>
@@ -87,11 +107,13 @@ export default {
     return {
       sample: 'text',
       currentProduct: {},
-      query: {}
+      query: {},
+      nowImageNum: 0,
+      items: []
     }
   },
-  mounted () {
-    console.log({ currentProduct: this.currentProduct })
+  created () {
+    this.items = [...Array(this.currentProduct.stock + 1).keys()]
   }
 }
 </script>

@@ -39,11 +39,15 @@
         </v-list>
         <hr>
         <v-list>
-          <v-list-item v-for="(item, i) in category" :key="i" color="#443947">
+          <v-list-item v-for="(item, i) in category" :key="i" color="#443947" :to="item.to">
             <v-list-item-content>
               <v-list-item-title v-text="item.main" />
               <v-list v-if="item.sub">
-                <v-list-item v-for="subitem in item.sub" :key="subitem.id">
+                <v-list-item
+                  v-for="subitem in item.sub"
+                  :key="subitem.id"
+                  :to="subitem.to"
+                >
                   {{ subitem }}
                 </v-list-item>
               </v-list>
@@ -51,53 +55,71 @@
           </v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-app-bar
-        :clipped-left="clipped"
-        fixed
-        app
-        class="header"
-        elevation="2"
-        color="yellow lighten-5"
-      >
+      <v-app-bar :clipped-left="clipped" fixed app class="header" color="yellow lighten-5">
         <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
         <v-toolbar-title class="u-font-kalam" v-text="title" />
         <v-spacer />
       </v-app-bar>
+
       <v-content>
-        <nuxt />
+        <v-row class="mt-4 d-flex justify-space-between" no-gutters>
+          <v-col class="d-flex justify-start" cols="1" xs="2" md="1">
+            <v-img height="30" contain :src="instagram">
+              <v-card
+                height="100%"
+                color="transparent"
+                href="https://www.instagram.com/monamiraxa/"
+              />
+            </v-img>
+          </v-col>
+          <v-col cols="6" xs="6" md="9" />
+          <v-col class="d-flex flex-column align-center" cols="1" xs="2" md="1">
+            <v-img height="30" contain :src="cartIcon">
+              <v-card height="100%" color="transparent" to="/cart" />
+            </v-img>
+            <span>カート</span>
+          </v-col>
+          <v-col class="d-flex flex-column align-center" cols="1" xs="2" md="1">
+            <v-img height="30" contain :src="homeIcon">
+              <v-card height="100%" color="transparent" to="/" />
+            </v-img>
+            <span>ホーム</span>
+          </v-col>
+        </v-row>
+        <nuxt style="margin-bottom:100px" />
       </v-content>
 
       <v-footer app class="footer d-flex justify-center">
-        <v-btn text>
+        <v-btn text to="/">
           ホーム
         </v-btn>
         <v-divider class="mt-1 mb-1" vertical />
-        <v-btn text>
+        <v-btn text to="/about">
           お店のこと
         </v-btn>
         <v-divider class="mt-1 mb-1" vertical />
-        <v-btn text>
+        <v-btn text to="/flow">
           お買い物の流れ
         </v-btn>
         <v-divider class="mt-1 mb-1" vertical />
-        <v-btn text>
+        <v-btn text to="/contact">
           お問い合わせ
         </v-btn>
         <v-divider class="mt-1 mb-1" vertical />
-        <v-btn text>
+        <v-btn text to="/about#postage">
           送料について
         </v-btn>
         <v-divider class="mt-1 mb-1" vertical />
-        <v-btn text>
+        <v-btn text to="/about#payment">
           お支払いについて
         </v-btn>
         <v-divider class="mt-1 mb-1" vertical />
-        <v-btn text>
+        <v-btn text to="/privacy-policy">
           プライバシーポリシー
         </v-btn>
         <v-divider class="mt-1 mb-1" vertical />
-        <v-btn text>
+        <v-btn text to="/terms-of-sale">
           特定商取引法に基づく表記
         </v-btn>
       </v-footer>
@@ -106,9 +128,16 @@
 </template>
 
 <script>
+import instagram from '~/assets/img/instagram.png'
+import homeIcon from '~/assets/img/home_icon.png'
+import cartIcon from '~/assets/img/cart_icon.png'
+
 export default {
   data () {
     return {
+      instagram,
+      homeIcon,
+      cartIcon,
       clipped: false,
       drawer: false,
       permanent: false,
@@ -139,25 +168,32 @@ export default {
         {
           icon: 'mdi-circle-small',
           main: 'スタイ',
+          to: '/#sty',
           sub: ['もくもく', 'たまご', 'ドーナツ', 'その他']
         },
         {
-          main: 'よだれカバー'
+          main: 'よだれカバー',
+          to: '/#droolcover'
         },
         {
-          main: 'ガーゼハンカチ'
+          main: 'ガーゼハンカチ',
+          to: '/#gauzehandkerchief'
         },
         {
-          main: 'にぎにぎ'
+          main: 'にぎにぎ',
+          to: '/#niginigi'
         },
         {
-          main: 'おなまえタグ'
+          main: 'おなまえタグ',
+          to: '/#nametag'
         },
         {
-          main: 'その他'
+          main: 'その他',
+          to: '/#other'
         },
         {
-          main: 'ラッピング'
+          main: 'ラッピング',
+          to: '/#wrapping'
         }
       ],
       miniVariant: false,

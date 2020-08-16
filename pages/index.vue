@@ -1,32 +1,38 @@
 <template>
   <section>
     <v-row class="d-flex justify-center">
-      <v-col cols="12" md="6">
+      <v-col cols="12" md="8">
         <v-img :src="banner" contain />
       </v-col>
     </v-row>
 
     <v-container v-if="message.length > 0 ">
-      <v-card class="message" color="grey lighten-5" elevation="0">
-        <dl>
-          <dt>お店からのメッセージ</dt>
-          <dd>
-            <ul>
-              <li
-                v-for="(message,n) in limitMessage"
-                :key="'message_' + n"
-              >
-                {{ message.date }}：{{ message.text }}
-              </li>
-            </ul>
-          </dd>
-        </dl>
-      </v-card>
+      <v-row class="d-flex justify-center">
+        <v-col cols="12" md="8">
+          <v-card class="message" color="grey lighten-5" elevation="0">
+            <dl>
+              <dt>お店からのメッセージ</dt>
+              <dd>
+                <ul>
+                  <li
+                    v-for="(message,n) in limitMessage"
+                    :key="'message_' + n"
+                  >
+                    {{ message.date }}：{{ message.text }}
+                  </li>
+                </ul>
+              </dd>
+            </dl>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-container>
 
     <v-container color="yellow lighten-5">
       <!-- 商品エリア -->
-      <h2>スタイ</h2>
+      <h2 id="sty">
+        スタイ
+      </h2>
       <h3>もくもく</h3>
 
       <v-container class="pa-0">
@@ -167,7 +173,9 @@
         </v-row>
       </v-container>
 
-      <h2>よだれカバー</h2>
+      <h2 id="droolcover">
+        よだれカバー
+      </h2>
       <v-container class="pa-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
@@ -204,7 +212,9 @@
         </v-row>
       </v-container>
 
-      <h2>ガーゼハンカチ</h2>
+      <h2 id="gauzehandkerchief">
+        ガーゼハンカチ
+      </h2>
       <v-container class="pa-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
@@ -238,7 +248,9 @@
         </v-row>
       </v-container>
 
-      <h2>にぎにぎ</h2>
+      <h2 id="niginigi">
+        にぎにぎ
+      </h2>
       <v-container class="pa-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
@@ -272,7 +284,9 @@
         </v-row>
       </v-container>
 
-      <h2>おなまえタグ</h2>
+      <h2 id="nametag">
+        おなまえタグ
+      </h2>
       <v-container class="pa-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
@@ -306,7 +320,9 @@
         </v-row>
       </v-container>
 
-      <h2>その他</h2>
+      <h2 id="other">
+        その他
+      </h2>
       <v-container class="pa-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
@@ -340,7 +356,9 @@
         </v-row>
       </v-container>
 
-      <h2>ラッピング</h2>
+      <h2 id="wrapping">
+        ラッピング
+      </h2>
       <v-container class="pa-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
