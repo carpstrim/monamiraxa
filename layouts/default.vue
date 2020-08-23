@@ -39,7 +39,13 @@
         </v-list>
         <hr>
         <v-list>
-          <v-list-item v-for="(item, i) in category" :key="i" color="#443947" :to="item.to">
+          <v-list-item
+            v-for="(item, i) in category"
+            :key="i"
+            color="#443947"
+            :to="item.to"
+            @click="drawer = !$vuetify.breakpoint.smAndDown"
+          >
             <v-list-item-content>
               <v-list-item-title v-text="item.main" />
               <v-list v-if="item.sub">
@@ -63,34 +69,35 @@
       </v-app-bar>
 
       <v-content>
-        <v-row class="mt-4 d-flex justify-space-between" no-gutters>
-          <v-col class="d-flex justify-start" cols="1" xs="2" md="1">
-            <v-img height="30" contain :src="instagram">
+        <v-row class="mr-2 ml-2 mt-4 d-flex justify-space-between" no-gutters>
+          <v-col class="d-flex flex-column align-center" cols="1" xs="2" md="1">
+            <v-img class="mt-1" height="30" contain :src="instagram">
               <v-card
                 height="100%"
                 color="transparent"
                 href="https://www.instagram.com/monamiraxa/"
               />
             </v-img>
+            <span class="icon">Instagram</span>
           </v-col>
           <v-col cols="6" xs="6" md="9" />
-          <v-col class="d-flex flex-column align-center" cols="1" xs="2" md="1">
+          <v-col class="d-flex flex-column align-center" cols="1" xs="3" md="1">
             <v-img height="30" contain :src="cartIcon">
-              <v-card height="100%" color="transparent" to="/cart" />
+              <v-card height="100%" tile color="transparent" to="/cart" />
             </v-img>
-            <span>カート</span>
+            <span class="icon">カート</span>
           </v-col>
           <v-col class="d-flex flex-column align-center" cols="1" xs="2" md="1">
             <v-img height="30" contain :src="homeIcon">
-              <v-card height="100%" color="transparent" to="/" />
+              <v-card height="100%" tile color="transparent" to="/" />
             </v-img>
-            <span>ホーム</span>
+            <span class="icon">ホーム</span>
           </v-col>
         </v-row>
         <nuxt style="margin-bottom:100px" />
       </v-content>
 
-      <v-footer app class="footer d-flex justify-center">
+      <v-footer :app="$vuetify.breakpoint.smAndUp" class="footer d-flex justify-center">
         <v-btn text to="/">
           ホーム
         </v-btn>
@@ -209,6 +216,16 @@ export default {
   },
   created () {
     this.drawer = !this.$vuetify.breakpoint.smAndDown
-  }
+    console.log(this.drawer)
+  },
+
+  methods: {}
 }
 </script>
+
+<style>
+.icon {
+  font-size: 7pt;
+  white-space: nowrap;
+}
+</style>

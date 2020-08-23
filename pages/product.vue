@@ -2,27 +2,12 @@
   <v-container color="yellow lighten-5">
     <section>
       <v-container class="pa-0">
-        <h2 class="mt-3 ml-3">
-          {{ currentProduct.name }}
-        </h2>
-        <v-row class="mt-2" dense>
-          <!-- TODO: カルーセルに差し替え予定 -->
-          <v-col style="max-wispanh:400px" cols="12" xs="12" sm="6">
-            <v-carousel
-              v-model="nowImageNum"
-              style="max-height:400px; max-wispanh:400px"
-              class="pa-3"
-              hide-delimiters
-              :show-arrows="false"
-            >
-              <v-carousel-item
-                v-for="(image,n) in currentProduct.images"
-                :key="'image_' + n"
-                :src="image.fields.file.url"
-                aspect-ratio="1"
-                cover
-              />
-            </v-carousel>
+        <v-row dense class="mt-2 d-flex justify-center">
+          <v-col cols="12" xs="12" sm="6" md="5" lg="4">
+            <h2 class="mt-3 ml-3">
+              {{ currentProduct.name }}
+            </h2>
+            <v-img class="ma-3 rounded-lg" :src="nowDisplayImg" cover aspect-ratio="1" />
             <v-row class="mt-3" no-gutters>
               <v-col
                 v-for="(image,m) in currentProduct.images"
@@ -37,17 +22,29 @@
               </v-col>
             </v-row>
           </v-col>
-          <v-col cols="12" xs="12" sm="6">
-            <p class="mt-3">
+          <v-col
+            class="pt-8"
+            cols="12"
+            xs="12"
+            sm="6"
+            md="5"
+            lg="5"
+          >
+            <p style="white-space: pre-line;">
               {{ currentProduct.description }}
             </p>
             <p>
               <span class="u-va-top">サイズ：</span>
               <span class>
-                <ul>
-                  <li>約 {{ currentProduct.vertical }} cm</li>
-                  <li>約 {{ currentProduct.horizontal }} cm</li>
-                  <li>約 {{ currentProduct.neck }} cm</li>
+                <ul v-if="currentProduct.productType.fields.slug === 'sty'">
+                  <li>横幅：約 {{ currentProduct.horizontal }} cm</li>
+                  <li>首下：約 {{ currentProduct.vertical }} cm</li>
+                  <li>首回り：約 {{ currentProduct.neck }} cm</li>
+                </ul>
+                <ul v-else>
+                  <li>縦幅：約 {{ currentProduct.vertical }} cm</li>
+                  <li>横幅：約 {{ currentProduct.horizontal }} cm</li>
+                  <li>首回り：約 {{ currentProduct.neck }} cm</li>
                 </ul>
               </span>
             </p>
@@ -68,8 +65,16 @@
               SOLD OUT
             </div>
 
-            <div v-if="currentProduct.stock > 0" style="width:150px">
-              <v-select dense placeholder="購入数を選択" :items="items" />
+            <div v-if="currentProduct.stock > 0" class="mt-2" style="width:200px">
+              購入数：
+              <v-select
+                v-model="addToCart"
+                background-color="white"
+                dense
+                placeholder="購入数を選択"
+                :items="items"
+                style="width: 130px"
+              />
             </div>
 
             <v-btn
@@ -77,9 +82,24 @@
               color="light-blue darken-1"
               dark
               block
+              @click="cart()"
             >
               カートに入れる
             </v-btn>
+            <div class="d-flex justify-center">
+              <p class="red--text mt-2">
+                {{ warningText }}
+              </p>
+            </div>
+            <v-snackbar v-model="snackbar" top color="blue darken-3" text timeout="-1">
+              <p>商品をカートに追加しました。</p>
+              <p>{{ currentProduct.name }}:{{ currentProduct.selected }}個</p>
+              <template v-slot:action="{ attrs }">
+                <v-btn outlined v-bind="attrs" @click="snackbar = false">
+                  閉じる
+                </v-btn>
+              </template>
+            </v-snackbar>
           </v-col>
         </v-row>
       </v-container>
@@ -98,7 +118,12 @@ export default {
         'fields.id': query.id
       })
       .then((e) => {
-        return e.items[0].fields
+        const item = e.items[0]
+
+        return {
+          entryId: item.sys.id,
+          ...item.fields
+        }
       })
 
     return { currentProduct }
@@ -109,11 +134,58 @@ export default {
       currentProduct: {},
       query: {},
       nowImageNum: 0,
-      items: []
+      items: [],
+      cartItems: [],
+      addToCart: '',
+      warningText: '',
+      snackbar: false
+    }
+  },
+  computed: {
+    nowDisplayImg () {
+      return this.currentProduct.images[this.nowImageNum].fields.file.url
     }
   },
   created () {
-    this.items = [...Array(this.currentProduct.stock + 1).keys()]
+    this.items = [...Array(this.currentProduct.stock).keys()].map(i => ++i)
+    this.cartItems = this.$cart.data
+    console.log({ cart: this.cartItems })
+  },
+  mounted () {
+    console.log({ data: this.currentProduct })
+  },
+  methods: {
+    cart () {
+      console.log({ val: this.addToCart })
+      if (this.addToCart) {
+        const cartItemIds = this.cartItems.map((item) => {
+          return item.id
+        })
+        console.log({ cartItemIds })
+        if (cartItemIds.includes(this.currentProduct.id)) {
+          const newItems = this.cartItems.map((item) => {
+            if (item.id === this.currentProduct.id) {
+              item.selected = item.selected * 1 + this.addToCart * 1
+              return item
+            } else {
+              return item
+            }
+          })
+          this.$cart.renew(newItems)
+          this.currentProduct.selected = this.addToCart // スナックバー用
+          this.snackbar = true
+        } else {
+          this.currentProduct.selected = this.addToCart
+
+          this.$cart.regist(this.currentProduct)
+          this.snackbar = true
+        }
+      } else {
+        this.warningText = '購入数を選択してください'
+      }
+      this.addToCart = ''
+      console.log({ cart: this.$cart.data })
+    }
   }
 }
 </script>

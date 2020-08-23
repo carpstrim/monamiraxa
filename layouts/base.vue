@@ -19,6 +19,6 @@ export default {
 <style scoped lang="scss">
 .base {
   height: 100%;
-  background: top left / 250px repeat url(~assets/img/bg_products.png) !important;
+  background: top left / 250px repeat url(~assets/img/bg_check.png) !important;
 }
 </style>

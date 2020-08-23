@@ -1,7 +1,7 @@
 <template>
   <section>
     <v-row class="d-flex justify-center">
-      <v-col cols="12" md="8">
+      <v-col cols="12">
         <v-img :src="banner" contain />
       </v-col>
     </v-row>
