@@ -1,16 +1,21 @@
 <template>
   <v-container color="yellow lighten-5">
     <section>
-      <v-container class="pa-0">
+      <v-container class="pa-0 d-flex flex-column">
+        <h2 class="mt-3 ml-3">
+          {{ currentProduct.name }}
+        </h2>
         <v-row dense class="mt-2 d-flex justify-center">
           <v-col cols="12" xs="12" sm="6" md="5" lg="4">
-            <h2 class="mt-3 ml-3">
-              {{ currentProduct.name }}
-            </h2>
-            <v-img class="ma-3 rounded-lg" :src="nowDisplayImg" cover aspect-ratio="1" />
+            <v-img
+              class="ma-3 rounded-lg"
+              :src="nowDisplayImg"
+              cover
+              aspect-ratio="1"
+            />
             <v-row class="mt-3" no-gutters>
               <v-col
-                v-for="(image,m) in currentProduct.images"
+                v-for="(image, m) in currentProduct.images"
                 :key="'imageSelect_' + m"
                 class="pl-3"
                 cols="2"
@@ -23,39 +28,47 @@
             </v-row>
           </v-col>
           <v-col
-            class="pt-8"
+            class="pr-3 pl-3"
             cols="12"
             xs="12"
             sm="6"
             md="5"
             lg="5"
           >
-            <p style="white-space: pre-line;">
+            <p style="white-space: pre-line">
               {{ currentProduct.description }}
             </p>
-            <p>
-              <span class="u-va-top">サイズ：</span>
-              <span class>
-                <ul v-if="currentProduct.productType.fields.slug === 'sty'">
+            <p v-if="currentProduct.productType.fields.slug != 'wrapping'">
+              <span class="u-va-top">サイズ</span>
+              <span>
+                <ul
+                  v-if="currentProduct.productType.fields.slug === 'sty'"
+                  class="ml-3"
+                >
                   <li>横幅：約 {{ currentProduct.horizontal }} cm</li>
                   <li>首下：約 {{ currentProduct.vertical }} cm</li>
                   <li>首回り：約 {{ currentProduct.neck }} cm</li>
                 </ul>
-                <ul v-else>
+                <ul v-else class="ml-3">
                   <li>縦幅：約 {{ currentProduct.vertical }} cm</li>
                   <li>横幅：約 {{ currentProduct.horizontal }} cm</li>
-                  <li>首回り：約 {{ currentProduct.neck }} cm</li>
                 </ul>
               </span>
             </p>
 
             <p>
-              <span class>素材：</span>
-              <span class>{{ currentProduct.material }}</span>
+              <span class="u-va-top">素材</span>
+              <span>
+                <ul>
+                  <li class="ml-3" style="white-space: pre-wrap">
+                    {{ currentProduct.material }}
+                  </li>
+                </ul>
+              </span>
             </p>
             <v-divider />
             <span class>価格：</span>
-            <span class>{{ currentProduct.price }}円</span>
+            <span>{{ currentProduct.price }}円</span>
             <br>
             <div v-if="currentProduct.stock > 0">
               <span class>在庫数：</span>
@@ -65,7 +78,11 @@
               SOLD OUT
             </div>
 
-            <div v-if="currentProduct.stock > 0" class="mt-2" style="width:200px">
+            <div
+              v-if="currentProduct.stock > 0"
+              class="mt-2"
+              style="width: 200px"
+            >
               購入数：
               <v-select
                 v-model="addToCart"
@@ -79,8 +96,7 @@
 
             <v-btn
               :disabled="!(currentProduct.stock > 0)"
-              color="light-blue darken-1"
-              dark
+              color="amber lighten-3"
               block
               @click="cart()"
             >
@@ -91,7 +107,13 @@
                 {{ warningText }}
               </p>
             </div>
-            <v-snackbar v-model="snackbar" top color="blue darken-3" text timeout="-1">
+            <v-snackbar
+              v-model="snackbar"
+              top
+              color="blue darken-3"
+              text
+              timeout="-1"
+            >
               <p>商品をカートに追加しました。</p>
               <p>{{ currentProduct.name }}:{{ currentProduct.selected }}個</p>
               <template v-slot:action="{ attrs }">
@@ -163,9 +185,13 @@ export default {
         })
         console.log({ cartItemIds })
         if (cartItemIds.includes(this.currentProduct.id)) {
+          // すでにカートに同じ商品があるとき、足しこむだけ
           const newItems = this.cartItems.map((item) => {
             if (item.id === this.currentProduct.id) {
-              item.selected = item.selected * 1 + this.addToCart * 1
+              item.selected = Math.min(
+                item.selected * 1 + this.addToCart * 1,
+                item.stock * 1
+              )
               return item
             } else {
               return item

@@ -15,8 +15,8 @@ ul {
 
 .main {
   color: $color-default;
-  height: 100%;
   background-color: $color-main;
+
 }
 
 .drawer {
@@ -46,4 +46,8 @@ ul {
   background: top left / 45px repeat url('~assets/img/bg_block.png');
 
   
+} 
+
+h2{
+  font-size: 16pt
 }

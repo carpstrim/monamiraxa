@@ -2,7 +2,7 @@
   <v-container>
     <section>
       <h1>カート</h1>
-      <div style="width:100%" class="d-flex justify-end align-content-end">
+      <div style="width: 100%" class="d-flex justify-end align-content-end">
         <nuxt-link to="/terms-of-sale">
           <p class="product-name mt-3">
             ※特定商取引法に基づく表示
@@ -17,20 +17,35 @@
         :items="cartItems"
         class="elevation-1"
         disable-filtering
+        disable-sort
         hide-default-footer
         calculate-widths
       >
-        <template v-slot:item.name="{item}">
-          <nuxt-link :to="`/product/?category=${item.productType.fields.slug}&id=${item.id}`">
-            <span class="product-name mt-3">{{ item.name }}</span>
+        <template v-slot:item.name="{ item }">
+          <nuxt-link
+            :to="`/product/?category=${item.productType.fields.slug}&id=${item.id}`"
+          >
+            <span
+              class="product-name mt-3"
+              :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''"
+            >{{ item.name }}</span>
             <v-icon x-small>
               mdi-magnify
             </v-icon>
           </nuxt-link>
         </template>
 
+        <template v-slot:item.price="{ item }">
+          <div :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''">
+            {{ item.price }}円
+          </div>
+        </template>
+
         <template v-slot:item.selected="{ item }">
-          <div class="d-flex inputs">
+          <div
+            class="d-flex inputs"
+            :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''"
+          >
             <v-text-field
               v-model="item.selected"
               class="mt-2 mb-n5"
@@ -42,10 +57,10 @@
               height="15px"
             />
             <div class="d-felx flex-column align-center mt-1">
-              <v-icon @click="itemCount('up',item)">
+              <v-icon @click="itemCount('up', item)">
                 mdi-menu-up
               </v-icon>
-              <v-icon @click="itemCount('down',item)">
+              <v-icon @click="itemCount('down', item)">
                 mdi-menu-down
               </v-icon>
             </div>
@@ -53,14 +68,19 @@
         </template>
 
         <template v-slot:item.delete="{ item }">
-          <v-icon small @click="deleteDialog(item)">
-            mdi-delete
-          </v-icon>
+          <div>
+            <v-icon @click="deleteDialog(item)">
+              mdi-delete
+            </v-icon>
+          </div>
         </template>
 
         <template v-slot:item.sum="{ item }">
-          <div class="mr-3">
-            {{ item.selected > 0 ? item.price * item.selected : "ー" }}
+          <div
+            class="mr-3"
+            :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''"
+          >
+            {{ item.selected > 0 ? `${item.price * item.selected}円` : "ー" }}
           </div>
         </template>
 
@@ -68,7 +88,7 @@
           <v-divider />
 
           <v-container class="d-flex justify-end">
-            <div>
+            <div :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''">
               <span>商品合計：{{ total }}円</span>
               <br>
               <span>送料：別途お知らせ</span>
@@ -100,7 +120,11 @@
 
           <v-card-actions>
             <v-spacer />
-            <v-btn color="red darken-1" outlined @click="deleteItem(dialogItem)">
+            <v-btn
+              color="red darken-1"
+              outlined
+              @click="deleteItem(dialogItem)"
+            >
               削除する
             </v-btn>
             <v-btn color="blue darken-1" outlined @click="dialog = false">
@@ -115,50 +139,174 @@
         </nuxt-link>
       </div>
       <div>
-        <p>ラッピングをご希望の場合は、「ラッピング」をカートに入れてください。</p>
+        <p>
+          ラッピングをご希望の場合は、「ラッピング」を必要数量カートに入れてください。
+        </p>
       </div>
       <div class="d-flex mt-7">
         <h2 class="mr-5">
-          お客様情報の入力
+          お客さま情報の入力
         </h2>
         <nuxt-link class="mt-1" to="/privacy-policy">
           <span class="product-name mt-3">※プライバシーポリシー</span>
         </nuxt-link>
       </div>
-      <dl style="max-width:600px">
+      <dl style="max-width: 600px">
         <div>
           <dt>お名前</dt>
           <dd>
-            <v-text-field v-model="customerInfo.name" solo label row-height="15" />
+            <v-text-field
+              v-model="customerInfo.name"
+              solo
+              label
+              row-height="15"
+            />
           </dd>
         </div>
 
         <div>
           <dt>フリガナ</dt>
           <dd>
-            <v-text-field v-model="customerInfo.furigana" solo label row-height="15" />
+            <v-text-field
+              v-model="customerInfo.furigana"
+              solo
+              label
+              row-height="15"
+            />
           </dd>
         </div>
 
         <div>
           <dt>郵便番号</dt>
           <dd>
-            <v-text-field v-model="customerInfo.postCode" solo label row-height="15" />
+            <v-text-field
+              v-model="customerInfo.postCode"
+              solo
+              label
+              row-height="15"
+            />
           </dd>
         </div>
 
         <div>
           <dt>住所</dt>
           <dd>
-            <v-text-field v-model="customerInfo.address" solo label row-height="15" />
+            <v-text-field
+              v-model="customerInfo.address"
+              solo
+              label
+              row-height="15"
+            />
           </dd>
         </div>
 
         <div>
           <dt>電話番号</dt>
           <dd>
-            <v-text-field v-model="customerInfo.tel" solo label row-height="15" />
+            <v-text-field
+              v-model="customerInfo.tel"
+              solo
+              label
+              row-height="15"
+            />
           </dd>
+        </div>
+
+        <div>
+          <dt>メールアドレス</dt>
+          <dd>
+            <v-text-field
+              v-model="customerInfo.mail"
+              solo
+              label
+              row-height="15"
+            />
+          </dd>
+        </div>
+
+        <div>
+          <dt>メールアドレス（確認のためもう一度入力してください）</dt>
+          <dd>
+            <v-text-field
+              v-model="customerInfo.mailConfirm"
+              solo
+              label
+              row-height="15"
+            />
+          </dd>
+        </div>
+      </dl>
+
+      <div class="d-flex mt-7">
+        <h2 class="mr-5">
+          お届け先情報の入力
+        </h2>
+      </div>
+      <v-radio-group v-model="isDifferentAbove">
+        <v-radio :key="1" label="上記と同じ" :value="false" color="black" />
+        <v-radio :key="2" label="上記と異なる" :value="true" color="black" />
+      </v-radio-group>
+      <dl style="max-width: 600px">
+        <div v-show="isDifferentAbove">
+          <div>
+            <dt>お名前</dt>
+            <dd>
+              <v-text-field
+                v-model="customerInfo.shipName"
+                solo
+                label
+                row-height="15"
+              />
+            </dd>
+          </div>
+
+          <div>
+            <dt>フリガナ</dt>
+            <dd>
+              <v-text-field
+                v-model="customerInfo.shipFurigana"
+                solo
+                label
+                row-height="15"
+              />
+            </dd>
+          </div>
+
+          <div>
+            <dt>郵便番号</dt>
+            <dd>
+              <v-text-field
+                v-model="customerInfo.shipPostCode"
+                solo
+                label
+                row-height="15"
+              />
+            </dd>
+          </div>
+
+          <div>
+            <dt>住所</dt>
+            <dd>
+              <v-text-field
+                v-model="customerInfo.shipAddress"
+                solo
+                label
+                row-height="15"
+              />
+            </dd>
+          </div>
+
+          <div>
+            <dt>電話番号</dt>
+            <dd>
+              <v-text-field
+                v-model="customerInfo.shipTel"
+                solo
+                label
+                row-height="15"
+              />
+            </dd>
+          </div>
         </div>
 
         <h2>お支払方法</h2>
@@ -169,14 +317,21 @@
         </p>
 
         <div>
-          <dt>備考</dt>
+          <dt>
+            <h3>備考</h3>
+          </dt>
+          お店への連絡事項がありましたらご記入ください。複数の商品をまとめてラッピングを希望される場合は、どの商品をまとめるかご記入ください。
           <dd>
             <v-textarea v-model="customerInfo.note" solo label />
           </dd>
         </div>
       </dl>
 
-      <v-btn color="blue darken-1" :disabled="!activateSubmit" @click="confirm()">
+      <v-btn
+        color="amber lighten-3"
+        :disabled="!activateSubmit"
+        @click="confirm()"
+      >
         確認画面へ
       </v-btn>
     </section>
@@ -189,11 +344,18 @@ export default {
     return {
       cartItems: [],
       customerInfo: {
+        mail: '',
+        mailConfirm: '',
         name: '',
         furigana: '',
         postCode: '',
         address: '',
         tel: '',
+        shipName: '',
+        shipFurigana: '',
+        shipPostCode: '',
+        shipAddress: '',
+        shipTel: '',
         note: ''
       },
       dialog: false,
@@ -203,13 +365,15 @@ export default {
           text: '商品名',
           align: 'start',
           sortable: false,
+          filterable: false,
           value: 'name'
         },
-        { text: '単価', value: 'price', width: 70 },
+        { text: '単価', value: 'price', width: 100 },
         { text: '数量', value: 'selected', width: 100 },
         { text: '変更', value: 'delete', width: 70 },
         { text: '小計', value: 'sum', width: 100 }
-      ]
+      ],
+      isDifferentAbove: null
     }
   },
   computed: {
@@ -217,11 +381,18 @@ export default {
       activate = false
 
       if (
+        this.customerInfo.mail &&
+        this.customerInfo.mailConfirm &&
         this.customerInfo.name &&
         this.customerInfo.furigana &&
         this.customerInfo.postCode &&
         this.customerInfo.address &&
-        this.customerInfo.tel
+        this.customerInfo.tel &&
+        this.customerInfo.shipName &&
+        this.customerInfo.shipFurigana &&
+        this.customerInfo.shipPostCode &&
+        this.customerInfo.shipAddress &&
+        this.customerInfo.shipTel
       ) {
         activate = !activate
       }
@@ -238,9 +409,32 @@ export default {
       return total
     }
   },
+  watch: {
+    isDifferentAbove () {
+      if (!this.isDifferentAbove) {
+        this.customerInfo.shipName = this.customerInfo.name
+        this.customerInfo.shipFurigana = this.customerInfo.furigana
+        this.customerInfo.shipPostCode = this.customerInfo.postCode
+        this.customerInfo.shipAddress = this.customerInfo.address
+        this.customerInfo.shipTel = this.customerInfo.tel
+      } else {
+        this.customerInfo.shipName = ''
+        this.customerInfo.shipFurigana = ''
+        this.customerInfo.shipPostCode = ''
+        this.customerInfo.shipAddress = ''
+        this.customerInfo.shipTel = ''
+      }
+      console.log(this.customerInfo)
+    },
+    customerInfo () {
+      console.log(this.customerInfo)
+    }
+  },
   created () {
     this.cartItems = this.$cart.data
     this.customerInfo = this.$customerInfo.data
+    console.log({ cartItems: this.cartItems })
+    console.log({ customerInfo: this.customerInfo })
   },
   methods: {
     itemCount (type, item) {
@@ -276,6 +470,7 @@ export default {
       this.dialog = false
     },
     confirm () {
+      this.customerInfo.total = this.total
       // お客さん情報をローカルに保存
       this.$customerInfo.renew(this.customerInfo)
       console.log({ customerInfo: this.$customerInfo.data })
@@ -298,5 +493,9 @@ export default {
 .product-name {
   color: #000;
   text-decoration: underline;
+}
+
+.theme--light.v-data-table .v-data-table-header th {
+  font-size: 1rem;
 }
 </style>

@@ -76,7 +76,7 @@
       </v-app-bar>
 
       <v-main style="min-height:100%">
-        <v-container class="pt-0 pb-0" style="max-width:900px">
+        <v-container class="pt-0 pb-0">
           <v-row class="d-flex justify-space-between mr-1 ml-1" no-gutters>
             <v-col class="d-flex flex-column align-center" cols="1" xs="2" md="1">
               <v-img class="mt-1" height="30" contain :src="instagram">

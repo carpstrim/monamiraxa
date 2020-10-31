@@ -1,13 +1,15 @@
 <template>
-  <section style="height:100vh">
-    <h1>特定商取引法に基づく表示</h1>
-    <div class="d-flex justify-center" style="max-width:900px">
-      <v-simple-table>
+  <section class="flow">
+    <div>
+      <div>
+        <h1>特定商取引法に基づく表示</h1>
+      </div>
+      <v-simple-table class="mb-7">
         <template v-slot:default>
           <tbody>
             <tr v-for="item in desserts" :key="item.name">
               <td>{{ item.name }}</td>
-              <td style="max-width:600px">
+              <td style="max-width:600px;">
                 {{ item.content }}
               </td>
             </tr>
@@ -79,7 +81,7 @@ export default {
         {
           name: '返品期限',
           content:
-            '商品に不備があった場合、商品到着後３日以内にメールにてご連絡ください。≠nご連絡が３日以内に行われなかった場合、返品を受け付けられない場合がありますので予めご了承ください。\nその後、返品の方法をご連絡いたします。なお、未使用の商品に限ります。\nお客様都合の理由（イメージと異なる、気が変わった等）によるご返品はお受けできない場合がございます。 '
+            '商品に不備があった場合、商品到着後３日以内にメールにてご連絡ください。\nご連絡が３日以内に行われなかった場合、返品を受け付けられない場合がありますので予めご了承ください。\nその後、返品の方法をご連絡いたします。なお、未使用の商品に限ります。\nお客様都合の理由（イメージと異なる、気が変わった等）によるご返品はお受けできない場合がございます。 '
         },
         {
           name: '返品送料',
@@ -96,3 +98,23 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+ol {
+  list-style: none;
+}
+
+.flow {
+  margin: 0 auto;
+
+  @include breakpoint-up(md) {
+    width: 900px;
+  }
+}
+
+.flow_item {
+  + .flow_item {
+    margin-top: 20px;
+  }
+}
+</style>

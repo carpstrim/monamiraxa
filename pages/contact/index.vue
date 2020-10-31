@@ -1,6 +1,6 @@
 <template>
   <v-container class="d-flex justify-center">
-    <section style="max-width:600px; width:80%">
+    <section class="flow">
       <h1 class="mb-7">
         お問い合わせ
       </h1>
@@ -37,19 +37,13 @@
         <div>
           <dt>内容</dt>
           <dd>
-            <v-textarea
-              v-model="contact.content"
-              label
-              solo
-              value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
-              hint="Hint text"
-            />
+            <v-textarea v-model="contact.content" label solo />
           </dd>
         </div>
       </dl>
 
       <v-btn
-        color="primary"
+        color="amber lighten-3"
         nuxt
         :loading="loading"
         :disabled="!activateSubmit"
@@ -102,9 +96,33 @@ export default {
 
       await call(this.contact).then((res) => {
         console.log({ res })
-        this.$router.push('complete')
+        this.$router.push('/contact/complete')
       })
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+ol {
+  list-style: none;
+}
+
+.flow {
+  margin: 0 auto;
+
+  @include breakpoint-up(md) {
+    width: 900px;
+  }
+
+  @include breakpoint-down(sm) {
+    width: 600px;
+  }
+}
+
+.flow_item {
+  + .flow_item {
+    margin-top: 20px;
+  }
+}
+</style>

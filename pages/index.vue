@@ -1,42 +1,61 @@
 <template>
   <section>
-    <v-row class="d-flex justify-center">
-      <v-col cols="12">
+    <v-container>
+      <v-container
+        :class="
+          $vuetify.breakpoint.smAndDown
+            ? 'd-flex justify-center pa-0'
+            : 'd-flex justify-center pt-0 pb-0'
+        "
+      >
         <v-img :src="banner" contain />
-      </v-col>
-    </v-row>
+      </v-container>
+    </v-container>
 
-    <v-container v-if="message.length > 0 ">
-      <v-row class="d-flex justify-center">
+    <v-container v-if="message.length > 0">
+      <v-row>
         <v-col cols="12" md="8">
-          <v-card class="message" color="grey lighten-5" elevation="0">
-            <dl>
-              <dt>お店からのメッセージ</dt>
-              <dd>
-                <ul>
-                  <li
-                    v-for="(message,n) in limitMessage"
-                    :key="'message_' + n"
-                  >
-                    {{ message.date }}：{{ message.text }}
-                  </li>
-                </ul>
-              </dd>
-            </dl>
+          <v-card flat tile color="transparent">
+            <v-list-item>
+              <v-list-item-avatar size="24" class="mr-0 ml-n5">
+                <v-img :src="donguri" />
+              </v-list-item-avatar>
+              <v-list-item-content>
+                <h2>お知らせ</h2>
+              </v-list-item-content>
+            </v-list-item>
+            <div
+              v-for="(message, n) in limitMessage"
+              :key="'message_' + n"
+              class="itemList ml-3message-wrapper"
+            >
+              <div class="message-side">
+                {{ message.date }}
+              </div>
+              <div class="message-main">
+                {{ message.itemText }}
+              </div>
+            </div>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
-
-    <v-container color="yellow lighten-5">
+    <v-container v-if="stopAll" class="d-flex justify-center">
+      <p>現在、商品の販売を停止しております。</p>
+    </v-container>
+    <v-container v-else color="yellow lighten-5">
       <!-- 商品エリア -->
-      <h2 id="sty">
-        スタイ
+      <h2 id="sty" class="pt-7 ml-3 mb-n5">
+        <v-list-item-avatar size="24" class="ml-n4 mr-0 mt-1">
+          <v-img :src="donguri" />
+        </v-list-item-avatar>スタイ
       </h2>
-      <h3>もくもく</h3>
+      <h3 id="sty-mokumoku" class="pt-7 ml-3">
+        もくもく
+      </h3>
 
-      <v-container class="pa-0">
-        <v-row tag="ul" class="itemList" dense>
+      <v-container class="pt-0">
+        <v-row tag="ul" dense>
           <v-col
             v-for="item in styMokumoku"
             :key="item.id"
@@ -46,7 +65,12 @@
             md="3"
             xl="2"
           >
-            <n-link :to="{ path: '/product/?category=sty&subcategory=mokumoku&id=' + item.id }">
+            <n-link
+              :to="{
+                path:
+                  '/product/?category=sty&subcategory=mokumoku&id=' + item.id,
+              }"
+            >
               <Item :stock="item.stock">
                 <template #imgPath>
                   <v-img
@@ -61,6 +85,12 @@
                 </template>
                 <template #price>
                   {{ item.price }} 円
+                  <p
+                    v-if="item.stock * 1 <= 0"
+                    class="red--text font-weight-bold"
+                  >
+                    sold out
+                  </p>
                 </template>
               </Item>
             </n-link>
@@ -68,8 +98,11 @@
         </v-row>
       </v-container>
 
-      <h3>たまご</h3>
-      <v-container class="pa-0">
+      <h3 id="sty-tamago" class="pt-7 ml-3">
+        たまご
+      </h3>
+
+      <v-container class="pt-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
             v-for="item in styTamago"
@@ -80,9 +113,14 @@
             md="3"
             xl="2"
           >
-            <n-link :to="{ path: '/product/?category=sty&subcategory=tamago&id=' + item.id }">
+            <n-link
+              :to="{
+                path:
+                  '/product/?category=sty&subcategory=mokumoku&id=' + item.id,
+              }"
+            >
               <Item :stock="item.stock">
-                <template #imgPah>
+                <template #imgPath>
                   <v-img
                     class="rounded-lg"
                     aspect-ratio="1"
@@ -95,6 +133,12 @@
                 </template>
                 <template #price>
                   {{ item.price }} 円
+                  <p
+                    v-if="item.stock * 1 <= 0"
+                    class="red--text font-weight-bold"
+                  >
+                    sold out
+                  </p>
                 </template>
               </Item>
             </n-link>
@@ -102,8 +146,10 @@
         </v-row>
       </v-container>
 
-      <h3>ドーナツ</h3>
-      <v-container class="pa-0">
+      <h3 id="sty-donut" class="pt-7 ml-3">
+        ドーナツ
+      </h3>
+      <v-container class="pt-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
             v-for="item in styDonut"
@@ -114,7 +160,11 @@
             md="3"
             xl="2"
           >
-            <n-link :to="{ path: '/product/?category=sty&subcategory=donut&id=' + item.id }">
+            <n-link
+              :to="{
+                path: '/product/?category=sty&subcategory=donut&id=' + item.id,
+              }"
+            >
               <Item :stock="item.stock">
                 <template #imgPath>
                   <v-img
@@ -129,7 +179,10 @@
                 </template>
                 <template #price>
                   {{ item.price }} 円
-                  <p v-if="item.stock * 1 <= 0" class="red--text font-weight-bold">
+                  <p
+                    v-if="item.stock * 1 <= 0"
+                    class="red--text font-weight-bold"
+                  >
                     sold out
                   </p>
                 </template>
@@ -139,8 +192,10 @@
         </v-row>
       </v-container>
 
-      <h3>その他</h3>
-      <v-container class="pa-0">
+      <h3 id="sty-other" class="pt-7 ml-3">
+        その他
+      </h3>
+      <v-container class="pt-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
             v-for="item in styOther"
@@ -151,7 +206,11 @@
             md="3"
             xl="2"
           >
-            <n-link :to="{ path: '/product/?category=sty&subcategory=other&id=' + item.id }">
+            <n-link
+              :to="{
+                path: '/product/?category=sty&subcategory=other&id=' + item.id,
+              }"
+            >
               <Item :stock="item.stock">
                 <template #imgPath>
                   <v-img
@@ -166,6 +225,12 @@
                 </template>
                 <template #price>
                   {{ item.price }} 円
+                  <p
+                    v-if="item.stock * 1 <= 0"
+                    class="red--text font-weight-bold"
+                  >
+                    sold out
+                  </p>
                 </template>
               </Item>
             </n-link>
@@ -173,10 +238,12 @@
         </v-row>
       </v-container>
 
-      <h2 id="droolcover">
-        よだれカバー
+      <h2 id="droolcover" class="pt-7 ml-3">
+        <v-list-item-avatar size="24" class="ml-n4 mr-0 mt-1">
+          <v-img :src="donguri" />
+        </v-list-item-avatar>よだれカバー
       </h2>
-      <v-container class="pa-0">
+      <v-container class="pt-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
             v-for="item in droolcover"
@@ -187,7 +254,9 @@
             md="3"
             xl="2"
           >
-            <n-link :to="{ path: '/product/?category=droolcover&id=' + item.id }">
+            <n-link
+              :to="{ path: '/product/?category=droolcover&id=' + item.id }"
+            >
               <Item :stock="item.stock">
                 <template #imgPath>
                   <v-img
@@ -202,9 +271,12 @@
                 </template>
                 <template #price>
                   {{ item.price }} 円
-                  <v-btn v-if="item.stock * 1 <= 0" small>
+                  <p
+                    v-if="item.stock * 1 <= 0"
+                    class="red--text font-weight-bold"
+                  >
                     sold out
-                  </v-btn>
+                  </p>
                 </template>
               </Item>
             </n-link>
@@ -212,10 +284,12 @@
         </v-row>
       </v-container>
 
-      <h2 id="gauzehandkerchief">
-        ガーゼハンカチ
+      <h2 id="gauzehandkerchief" class="pt-7 ml-3">
+        <v-list-item-avatar size="24" class="ml-n4 mr-0 mt-1">
+          <v-img :src="donguri" />
+        </v-list-item-avatar>ガーゼハンカチ
       </h2>
-      <v-container class="pa-0">
+      <v-container class="pt-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
             v-for="item in gauzehandkerchief"
@@ -226,7 +300,11 @@
             md="3"
             xl="2"
           >
-            <n-link :to="{ path: '/product/?category=gauzehandkerchief&id=' + item.id }">
+            <n-link
+              :to="{
+                path: '/product/?category=gauzehandkerchief&id=' + item.id,
+              }"
+            >
               <Item :stock="item.stock">
                 <template #imgPath>
                   <v-img
@@ -241,6 +319,12 @@
                 </template>
                 <template #price>
                   {{ item.price }} 円
+                  <p
+                    v-if="item.stock * 1 <= 0"
+                    class="red--text font-weight-bold"
+                  >
+                    sold out
+                  </p>
                 </template>
               </Item>
             </n-link>
@@ -248,10 +332,12 @@
         </v-row>
       </v-container>
 
-      <h2 id="niginigi">
-        にぎにぎ
+      <h2 id="niginigi" class="pt-7 ml-3">
+        <v-list-item-avatar size="24" class="ml-n4 mr-0 mt-1">
+          <v-img :src="donguri" />
+        </v-list-item-avatar>にぎにぎ
       </h2>
-      <v-container class="pa-0">
+      <v-container class="pt-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
             v-for="item in niginigi"
@@ -277,6 +363,12 @@
                 </template>
                 <template #price>
                   {{ item.price }} 円
+                  <p
+                    v-if="item.stock * 1 <= 0"
+                    class="red--text font-weight-bold"
+                  >
+                    sold out
+                  </p>
                 </template>
               </Item>
             </n-link>
@@ -284,10 +376,12 @@
         </v-row>
       </v-container>
 
-      <h2 id="nametag">
-        おなまえタグ
+      <h2 id="nametag" class="pt-7 ml-3">
+        <v-list-item-avatar size="24" class="ml-n4 mr-0 mt-1">
+          <v-img :src="donguri" />
+        </v-list-item-avatar>おなまえタグ
       </h2>
-      <v-container class="pa-0">
+      <v-container class="pt-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
             v-for="item in nametag"
@@ -313,6 +407,12 @@
                 </template>
                 <template #price>
                   {{ item.price }} 円
+                  <p
+                    v-if="item.stock * 1 <= 0"
+                    class="red--text font-weight-bold"
+                  >
+                    sold out
+                  </p>
                 </template>
               </Item>
             </n-link>
@@ -320,10 +420,12 @@
         </v-row>
       </v-container>
 
-      <h2 id="other">
-        その他
+      <h2 id="other" class="pt-7 ml-3">
+        <v-list-item-avatar size="24" class="ml-n4 mr-0 mt-1">
+          <v-img :src="donguri" />
+        </v-list-item-avatar>その他
       </h2>
-      <v-container class="pa-0">
+      <v-container class="pt-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
             v-for="item in other"
@@ -349,6 +451,12 @@
                 </template>
                 <template #price>
                   {{ item.price }} 円
+                  <p
+                    v-if="item.stock * 1 <= 0"
+                    class="red--text font-weight-bold"
+                  >
+                    sold out
+                  </p>
                 </template>
               </Item>
             </n-link>
@@ -356,10 +464,12 @@
         </v-row>
       </v-container>
 
-      <h2 id="wrapping">
-        ラッピング
+      <h2 id="wrapping" class="pt-7 ml-3">
+        <v-list-item-avatar size="24" class="ml-n4 mr-0 mt-1">
+          <v-img :src="donguri" />
+        </v-list-item-avatar>ラッピング
       </h2>
-      <v-container class="pa-0">
+      <v-container class="pt-0">
         <v-row tag="ul" class="itemList" dense>
           <v-col
             v-for="item in wrapping"
@@ -385,6 +495,12 @@
                 </template>
                 <template #price>
                   {{ item.price }} 円
+                  <p
+                    v-if="item.stock * 1 <= 0"
+                    class="red--text font-weight-bold"
+                  >
+                    sold out
+                  </p>
                 </template>
               </Item>
             </n-link>
@@ -400,8 +516,10 @@ import Item from '~/components/molecules/Item'
 import client from '~/plugins/contentful'
 
 import banner from '~/assets/img/home.png'
+import donguri from '~/assets/img/donguri.png'
 
 export default {
+  layout: 'home',
   components: {
     Item
   },
@@ -412,21 +530,9 @@ export default {
         order: 'fields.order'
       })
       .then((e) => {
-        return e.items
-          .map((item) => {
-            return item.fields
-          })
-          .sort((a, b) => {
-            const abool = a.stock <= 0
-            const bbool = b.stock <= 0
-            if ((abool && bbool) || (!abool && !bbool)) {
-              return 0
-            }
-            if (abool) {
-              return 1
-            }
-            return -1
-          })
+        return e.items.map((item) => {
+          return item.fields
+        })
       })
 
     const sty = products.filter(e => e.productType.fields.slug === 'sty')
@@ -464,6 +570,13 @@ export default {
         })
       })
 
+    const stopAll = await client
+      .getEntries({
+        content_type: 'stopAll'
+      })
+      .then((e) => {
+        return e.items[0].fields.stopAll
+      })
     return {
       styMokumoku,
       styTamago,
@@ -475,11 +588,12 @@ export default {
       nametag,
       other,
       wrapping,
-      message
+      message,
+      stopAll
     }
   },
   data () {
-    return { banner }
+    return { banner, donguri }
   },
   computed: {
     limitMessage () {
@@ -487,19 +601,31 @@ export default {
     }
   },
   mounted () {
-    console.log({ styMokumoku: this.styMokumoku })
+    console.log({ styMokumoku: this.styMokumoku, styTamago: this.styTamago })
+    console.log({ stop: this.stopAll })
   }
 }
 </script>
 
 <style scoped lang="scss">
-.message {
-  padding: 12px 16px;
-  color: $color-default;
-}
-
 .itemList {
   list-style: none;
   padding-left: 0;
+  white-space: pre-line;
+}
+
+.message-wrapper {
+  overflow: hidden;
+}
+.message-main {
+  float: right;
+  width: 100%;
+  margin-left: -100px;
+  padding-left: 100px;
+  box-sizing: border-box;
+}
+.message-side {
+  float: left;
+  width: 100px;
 }
 </style>

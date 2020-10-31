@@ -1,13 +1,17 @@
 <template>
   <v-container>
     <section class="flow">
-      <h1>お買い物の流れ</h1>
-      <p>当店でのお買い物の流れは下記の通りです。</p>
+      <h1 class="ml-6">
+        お買い物の流れ
+      </h1>
+      <p class="ml-6">
+        当店でのお買い物の流れは下記の通りです。
+      </p>
       <ol class="flow_container">
         <li class="flow_item">
           <Card>
             <template #heading>
-              1. お客様
+              1. お客さま
             </template>
             <template #txt>
               <ol>
@@ -29,7 +33,8 @@
               <ol>
                 <li>申し込み内容を自動返信メールでお知らせ</li>
                 <li>在庫の確認・送料の決定</li>
-                <li>合計金額と振込先をメールでお知らせ（注文確定）</li>
+                <li>合計金額と振込先をメールでお知らせ</li>
+                <li>（この時点で注文確定となります）</li>
               </ol>
             </template>
           </Card>
@@ -37,7 +42,7 @@
         <li class="flow_item">
           <Card>
             <template #heading>
-              3. お客様
+              3. お客さま
             </template>
             <template #txt>
               <ol>
@@ -62,7 +67,7 @@
         <li class="flow_item">
           <Card>
             <template #heading>
-              5. お客様
+              5. お客さま
             </template>
             <template #txt>
               <ol>

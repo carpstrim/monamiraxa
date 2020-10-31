@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :style="`background-color:${color}`">
     <h2>
       <slot name="heading" />
     </h2>
@@ -10,7 +10,14 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    color: {
+      type: String,
+      default: '#fff'
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,8 +1,20 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
+    <v-navigation-drawer
+      v-model="drawer"
+      :mini-variant="miniVariant"
+      :clipped="clipped"
+      fixed
+      app
+    >
       <v-list>
-        <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+          :to="item.to"
+          router
+          exact
+        >
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
@@ -18,9 +30,9 @@
       <v-toolbar-title class="u-font-kalam" v-text="title" />
       <v-spacer />
     </v-app-bar>
-    <v-content>
+    <v-main>
       <nuxt />
-    </v-content>
+    </v-main>
 
     <v-footer :fixed="fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>

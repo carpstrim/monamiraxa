@@ -50,23 +50,4 @@ export default {
     opacity: 0.7;
   }
 }
-
-.sold {
-  position: relative;
-
-  &::before {
-    content: "sold";
-    display: block;
-    position: absolute;
-    top: -40px;
-    left: -44px;
-    padding-top: 55px;
-    width: 80px;
-    height: 80px;
-    background-color: $color-warning;
-    color: white;
-    text-align: center;
-    transform: rotate(-45deg);
-  }
-}
 </style>

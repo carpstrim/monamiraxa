@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <main class="base">
-      <v-content>
+    <main class="base d-flex justify-center">
+      <v-main style="max-width: 90vw">
         <nuxt />
-      </v-content>
+      </v-main>
     </main>
   </v-app>
 </template>
@@ -19,6 +19,6 @@ export default {
 <style scoped lang="scss">
 .base {
   height: 100%;
-  background: top left / 250px repeat url(~assets/img/bg_check.png) !important;
+  background-color: #fefde7;
 }
 </style>

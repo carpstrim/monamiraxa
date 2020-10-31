@@ -16,9 +16,9 @@ export default {
       const call = await this.$functions.httpsCallable('contact')
       await call({
         name: '安見　光平',
-        mail: 'uniqueusher@gmail.com',
+        mail: 'k.yasumi.jug@gmail.com',
         title: '聞きたいことがあります',
-        text: 'スタイのサイズ展開はどんな感じですか？'
+        content: 'スタイのサイズ展開はどんな感じですか？'
       })
     }
   }
