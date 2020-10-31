@@ -16,7 +16,7 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
       { href: 'https://fonts.googleapis.com/css2?family=Kalam&display=swap', rel: 'stylesheet' }
     ]
   },
@@ -35,7 +35,8 @@ export default {
   */
   plugins: [
     '@/plugins/firebase',
-    '@/plugins/contentful'
+    '@/plugins/contentful',
+    { src: '@/plugins/storage', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules

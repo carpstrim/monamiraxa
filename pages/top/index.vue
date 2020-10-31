@@ -5,9 +5,15 @@
         <figure class="top_figure">
           <img src="~/assets/img/top_door_open.png" alt>
         </figure>
-        <p>mon ami raxa (ﾓﾅﾐﾗｼｬ)は<br>手作りベビー用品のお店です。</p>
+        <p>
+          mon ami raxa (ﾓﾅﾐﾗｼｬ)は
+          <br>手作りベビー用品のお店です。
+        </p>
         <p>普段使いにも、おめかしにも、プレゼントにも。</p>
-        <p>大切な赤ちゃんの身の周りを彩る<br>アイテムをお届けします。</p>
+        <p>
+          大切な赤ちゃんの身の周りを彩る
+          <br>アイテムをお届けします。
+        </p>
       </div>
     </n-link>
   </div>
@@ -28,13 +34,18 @@ export default {
 }
 
 .top_container {
-  padding: 50px 0;
-  background-color:white;
+  background-color: white;
   text-align: center;
   color: $color-default;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
 
   @include breakpoint-up(md) {
     width: 800px;
+  }
+
+  @include breakpoint-down(sm) {
+    padding: 50px 0;
   }
 }
 
@@ -58,7 +69,7 @@ export default {
     transition: 0.2s;
 
     @include breakpoint-down(sm) {
-      animation: opacityHidden 0.5s $easeInOutQuad 1s forwards;
+      animation: opacityHidden 0.1s $easeInOutQuad 2s forwards;
     }
 
     @include breakpoint-up(md) {

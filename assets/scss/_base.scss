@@ -15,8 +15,8 @@ ul {
 
 .main {
   color: $color-default;
-  height: 100%;
   background-color: $color-main;
+
 }
 
 .drawer {
@@ -24,7 +24,7 @@ ul {
   position: relative;
   z-index: 0;
   height: 100%;
-  background: top left / 500px repeat url('~assets/img/bg_products.png');
+  background: top left / 150px repeat url('~assets/img/bg_products.png');
 
   &::before {
     content: '';
@@ -33,8 +33,8 @@ ul {
     z-index: -1;
     width: 100%;
     height: 100%;
-    background-color: #fff;
-    opacity: 0.6;
+    background-color: #FEFDE7;
+    opacity: 0.7;
   }
 }
 
@@ -44,4 +44,10 @@ ul {
 
 .footer {
   background: top left / 45px repeat url('~assets/img/bg_block.png');
+
+  
+} 
+
+h2{
+  font-size: 16pt
 }
