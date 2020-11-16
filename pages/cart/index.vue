@@ -343,21 +343,7 @@ export default {
   data () {
     return {
       cartItems: [],
-      customerInfo: {
-        mail: '',
-        mailConfirm: '',
-        name: '',
-        furigana: '',
-        postCode: '',
-        address: '',
-        tel: '',
-        shipName: '',
-        shipFurigana: '',
-        shipPostCode: '',
-        shipAddress: '',
-        shipTel: '',
-        note: ''
-      },
+      customerInfo: {},
       dialog: false,
       dialogItem: {},
       headers: [
@@ -377,26 +363,38 @@ export default {
     }
   },
   computed: {
-    activateSubmit (activate) {
-      activate = false
+    activateSubmit () {
+      if (this.isDifferentAbove) {
+        const active =
+          this.customerInfo.mail &&
+          this.customerInfo.mailConfirm &&
+          this.customerInfo.name &&
+          this.customerInfo.furigana &&
+          this.customerInfo.postCode &&
+          this.customerInfo.address &&
+          this.customerInfo.tel &&
+          this.customerInfo.shipName &&
+          this.customerInfo.shipFurigana &&
+          this.customerInfo.shipPostCode &&
+          this.customerInfo.shipAddress &&
+          this.customerInfo.shipTel
 
-      if (
-        this.customerInfo.mail &&
-        this.customerInfo.mailConfirm &&
-        this.customerInfo.name &&
-        this.customerInfo.furigana &&
-        this.customerInfo.postCode &&
-        this.customerInfo.address &&
-        this.customerInfo.tel &&
-        this.customerInfo.shipName &&
-        this.customerInfo.shipFurigana &&
-        this.customerInfo.shipPostCode &&
-        this.customerInfo.shipAddress &&
-        this.customerInfo.shipTel
-      ) {
-        activate = !activate
+        console.log({ active })
+        return active
+      } else {
+        const active =
+          this.customerInfo.mail &&
+          this.customerInfo.mailConfirm &&
+          this.customerInfo.name &&
+          this.customerInfo.furigana &&
+          this.customerInfo.postCode &&
+          this.customerInfo.address &&
+          this.customerInfo.tel &&
+          this.isDifferentAbove != null
+
+        console.log({ active })
+        return active
       }
-      return activate
     },
     total () {
       const subtotals = this.cartItems.map((item) => {
@@ -410,7 +408,7 @@ export default {
     }
   },
   watch: {
-    isDifferentAbove () {
+    /* isDifferentAbove () {
       if (!this.isDifferentAbove) {
         this.customerInfo.shipName = this.customerInfo.name
         this.customerInfo.shipFurigana = this.customerInfo.furigana
@@ -425,14 +423,15 @@ export default {
         this.customerInfo.shipTel = ''
       }
       console.log(this.customerInfo)
-    },
+    }, */
     customerInfo () {
       console.log(this.customerInfo)
     }
   },
   created () {
     this.cartItems = this.$cart.data
-    this.customerInfo = this.$customerInfo.data
+    this.customerInfo =
+      this.$customerInfo.data.length > 0 ? this.$customerInfo.data[0] : {}
     console.log({ cartItems: this.cartItems })
     console.log({ customerInfo: this.customerInfo })
   },
@@ -469,13 +468,21 @@ export default {
       this.$cart.renew(this.cartItems)
       this.dialog = false
     },
-    confirm () {
+    async confirm () {
       this.customerInfo.total = this.total
+      // 「上記と同じ」を選択しているとき、お届け先情報にお客さん情報を転記
+      if (!this.isDifferentAbove) {
+        this.customerInfo.shipName = this.customerInfo.name
+        this.customerInfo.shipFurigana = this.customerInfo.furigana
+        this.customerInfo.shipPostCode = this.customerInfo.postCode
+        this.customerInfo.shipAddress = this.customerInfo.address
+        this.customerInfo.shipTel = this.customerInfo.tel
+      }
       // お客さん情報をローカルに保存
-      this.$customerInfo.renew(this.customerInfo)
-      console.log({ customerInfo: this.$customerInfo.data })
+      await this.$customerInfo.renew([this.customerInfo])
+      console.log({ customerInfo: this.$customerInfo.data[0] })
       // 確認ページに飛ばす
-      this.$router.push('/cart/confirm')
+      await this.$router.push('/cart/confirm')
     }
   }
 }

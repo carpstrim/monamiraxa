@@ -287,9 +287,9 @@ export default {
     }
   },
   computed: {},
-  created () {
-    this.cartItems = this.$cart.data.filter(item => item.selected > 0)
-    this.customerInfo = this.$customerInfo.data
+  async created () {
+    this.cartItems = await this.$cart.data.filter(item => item.selected > 0)
+    this.customerInfo = await this.$customerInfo.data[0]
     console.log({ cart: this.cartItems })
     console.log({ info: this.customerInfo })
   },

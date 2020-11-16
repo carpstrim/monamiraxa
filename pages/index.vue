@@ -103,7 +103,7 @@
       </h3>
 
       <v-container class="pt-0">
-        <v-row tag="ul" class="itemList" dense>
+        <v-row tag="ul" dense>
           <v-col
             v-for="item in styTamago"
             :key="item.id"
@@ -150,7 +150,7 @@
         ドーナツ
       </h3>
       <v-container class="pt-0">
-        <v-row tag="ul" class="itemList" dense>
+        <v-row tag="ul" dense>
           <v-col
             v-for="item in styDonut"
             :key="item.id"
@@ -196,7 +196,7 @@
         その他
       </h3>
       <v-container class="pt-0">
-        <v-row tag="ul" class="itemList" dense>
+        <v-row tag="ul" dense>
           <v-col
             v-for="item in styOther"
             :key="item.id"
@@ -244,7 +244,7 @@
         </v-list-item-avatar>よだれカバー
       </h2>
       <v-container class="pt-0">
-        <v-row tag="ul" class="itemList" dense>
+        <v-row tag="ul" dense>
           <v-col
             v-for="item in droolcover"
             :key="item.id"
@@ -290,7 +290,7 @@
         </v-list-item-avatar>ガーゼハンカチ
       </h2>
       <v-container class="pt-0">
-        <v-row tag="ul" class="itemList" dense>
+        <v-row tag="ul" dense>
           <v-col
             v-for="item in gauzehandkerchief"
             :key="item.id"
@@ -338,7 +338,7 @@
         </v-list-item-avatar>にぎにぎ
       </h2>
       <v-container class="pt-0">
-        <v-row tag="ul" class="itemList" dense>
+        <v-row tag="ul" dense>
           <v-col
             v-for="item in niginigi"
             :key="item.id"
@@ -382,7 +382,7 @@
         </v-list-item-avatar>おなまえタグ
       </h2>
       <v-container class="pt-0">
-        <v-row tag="ul" class="itemList" dense>
+        <v-row tag="ul" dense>
           <v-col
             v-for="item in nametag"
             :key="item.id"
@@ -426,7 +426,7 @@
         </v-list-item-avatar>その他
       </h2>
       <v-container class="pt-0">
-        <v-row tag="ul" class="itemList" dense>
+        <v-row tag="ul" dense>
           <v-col
             v-for="item in other"
             :key="item.id"
@@ -470,7 +470,7 @@
         </v-list-item-avatar>ラッピング
       </h2>
       <v-container class="pt-0">
-        <v-row tag="ul" class="itemList" dense>
+        <v-row tag="ul" dense>
           <v-col
             v-for="item in wrapping"
             :key="item.id"
