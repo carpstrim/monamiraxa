@@ -53,17 +53,9 @@
               dense
               outlined
               flat
-              readonly
               height="15px"
+              color="black"
             />
-            <div class="d-felx flex-column align-center mt-1">
-              <v-icon @click="itemCount('up', item)">
-                mdi-menu-up
-              </v-icon>
-              <v-icon @click="itemCount('down', item)">
-                mdi-menu-down
-              </v-icon>
-            </div>
           </div>
         </template>
 
@@ -77,6 +69,18 @@
 
         <template v-slot:item.sum="{ item }">
           <div
+            v-if="item.selected > item.stock"
+            class="mr-3"
+            :style="
+              $vuetify.breakpoint.mdAndUp
+                ? 'font-size:1rem; color:red'
+                : 'color:red'
+            "
+          >
+            在庫数：{{ item.stock }}個
+          </div>
+          <div
+            v-else
             class="mr-3"
             :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''"
           >
@@ -88,6 +92,12 @@
           <v-divider />
 
           <v-container class="d-flex justify-end">
+            <p v-if="notFilled" class="red--text pr-5">
+              商品の数量を正しく入力してください
+            </p>
+            <p v-else-if="overStock" class="red--text pr-5">
+              数量が在庫数を超えている商品があります。
+            </p>
             <div :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''">
               <span>商品合計：{{ total }}円</span>
               <br>
@@ -135,23 +145,27 @@
       </v-dialog>
       <div class="d-flex justify-end align-content-end">
         <nuxt-link to="/about#postage">
-          <span class="product-name mt-3">※送料について</span>
+          <span class="product-name mt-5">※送料について</span>
         </nuxt-link>
       </div>
       <div>
-        <p>
+        <p class="mt-2">
+          商品の数量を変更すると自動的に金額が変更されます。
+          <br><span
+            class="font-weight-bold"
+          >（変更されない場合は、ブラウザを更新の上、再度お試しください。）</span><br>
           ラッピングをご希望の場合は、「ラッピング」を必要数量カートに入れてください。
         </p>
       </div>
-      <div class="d-flex mt-7">
+      <div :class="$vuetify.breakpoint.xs ? 'mt-7' : 'd-flex mt-7'">
         <h2 class="mr-5">
           お客さま情報の入力
         </h2>
         <nuxt-link class="mt-1" to="/privacy-policy">
-          <span class="product-name mt-3">※プライバシーポリシー</span>
+          <span class="product-name">※プライバシーポリシー</span>
         </nuxt-link>
       </div>
-      <dl style="max-width: 600px">
+      <dl class="mt-5" style="max-width: 600px">
         <div>
           <dt>お名前</dt>
           <dd>
@@ -232,6 +246,7 @@
               solo
               label
               row-height="15"
+              :rules="[rules]"
             />
           </dd>
         </div>
@@ -340,6 +355,7 @@
 
 <script>
 export default {
+  layout: 'home',
   data () {
     return {
       cartItems: [],
@@ -359,6 +375,9 @@ export default {
         { text: '変更', value: 'delete', width: 70 },
         { text: '小計', value: 'sum', width: 100 }
       ],
+      rules: val =>
+        this.customerInfo.mail === val ||
+        '上で入力したメールアドレスと同じものを入力してください',
       isDifferentAbove: null
     }
   },
@@ -368,6 +387,7 @@ export default {
         const active =
           this.customerInfo.mail &&
           this.customerInfo.mailConfirm &&
+          this.customerInfo.mail === this.customerInfo.mailConfirm &&
           this.customerInfo.name &&
           this.customerInfo.furigana &&
           this.customerInfo.postCode &&
@@ -377,7 +397,9 @@ export default {
           this.customerInfo.shipFurigana &&
           this.customerInfo.shipPostCode &&
           this.customerInfo.shipAddress &&
-          this.customerInfo.shipTel
+          this.customerInfo.shipTel &&
+          !this.notFilled &&
+          !this.overStock
 
         console.log({ active })
         return active
@@ -385,12 +407,15 @@ export default {
         const active =
           this.customerInfo.mail &&
           this.customerInfo.mailConfirm &&
+          this.customerInfo.mail === this.customerInfo.mailConfirm &&
           this.customerInfo.name &&
           this.customerInfo.furigana &&
           this.customerInfo.postCode &&
           this.customerInfo.address &&
           this.customerInfo.tel &&
-          this.isDifferentAbove != null
+          this.isDifferentAbove != null &&
+          !this.notFilled &&
+          !this.overStock
 
         console.log({ active })
         return active
@@ -405,27 +430,24 @@ export default {
         total += subtotals[i] * 1
       }
       return total
+    },
+    notFilled () {
+      return this.cartItems.some((obj, i, ary) => {
+        return !(obj.selected > 0)
+      })
+    },
+    overStock () {
+      return this.cartItems.some((obj, i, ary) => {
+        return obj.selected > obj.stock
+      })
     }
   },
   watch: {
-    /* isDifferentAbove () {
-      if (!this.isDifferentAbove) {
-        this.customerInfo.shipName = this.customerInfo.name
-        this.customerInfo.shipFurigana = this.customerInfo.furigana
-        this.customerInfo.shipPostCode = this.customerInfo.postCode
-        this.customerInfo.shipAddress = this.customerInfo.address
-        this.customerInfo.shipTel = this.customerInfo.tel
-      } else {
-        this.customerInfo.shipName = ''
-        this.customerInfo.shipFurigana = ''
-        this.customerInfo.shipPostCode = ''
-        this.customerInfo.shipAddress = ''
-        this.customerInfo.shipTel = ''
-      }
-      console.log(this.customerInfo)
-    }, */
     customerInfo () {
       console.log(this.customerInfo)
+    },
+    notFilled () {
+      this.$nuxt.refresh()
     }
   },
   created () {
@@ -435,6 +457,7 @@ export default {
     console.log({ cartItems: this.cartItems })
     console.log({ customerInfo: this.customerInfo })
   },
+  mounted () {},
   methods: {
     itemCount (type, item) {
       if (type === 'up') {
@@ -493,6 +516,10 @@ export default {
   background-color: #ffe082;
 }
 
+.v-data-table__mobile-row__header {
+  width: 80px;
+}
+
 .inputs {
   width: 70px;
 }
@@ -504,5 +531,9 @@ export default {
 
 .theme--light.v-data-table .v-data-table-header th {
   font-size: 1rem;
+}
+
+.v-data-table-header-mobile th {
+  display: none;
 }
 </style>

@@ -1,7 +1,10 @@
 /* eslint-disable */
 const functions = require('firebase-functions')
 const admin = require('firebase-admin')
-const nodemailer = require('nodemailer')
+//const nodemailer = require('nodemailer')
+const sgMail = require('@sendgrid/mail')
+
+sgMail.setApiKey(functions.config().sendgrid.apikey)
 
 const { createClient } = require('contentful-management')
 
@@ -10,13 +13,13 @@ const gmailPassword = functions.config().gmail.password
 
 const accessToken = functions.config().contentful.accesstoken
 
-const mailTransport = nodemailer.createTransport({
+/* const mailTransport = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: gmailEmail,
     pass: gmailPassword
   }
-})
+}) */
 
 
 
@@ -64,17 +67,23 @@ exports.contact = functions.https.onCall((data, context) => {
   const email = {
     from: gmailEmail,
     to: mail,
-    bcc: ['monamiraxa.handmade@gmail.com', 'dayabv@gmail.com'],
+    bcc: ['monamiraxa.handmade@gmail.com', 'dayabv@gmail.com', 'k.yasumi.jug@gmail.com'],
     //bcc: ['k.yasumi.jug@gmail.com', 'of.importance1109@gmail.com'],
     subject: '【mon ami raxa】お問い合わせを受け付けました（自動配信メール）',
     text: returnText
   }
-  mailTransport.sendMail(email, (err, info) => {
+  /* mailTransport.sendMail(email, (err, info) => {
     if (err) {
       return console.log(err)
     }
     return console.log('success')
+  }) */
+
+  sgMail.send(email).then(() => {
+    console.log("mail sent")
+    return null
   })
+  //return null
 })
 
 exports.purchase = functions.https.onCall(async (data, context) => {
@@ -149,15 +158,20 @@ exports.purchase = functions.https.onCall(async (data, context) => {
     '【Instagram】ID：monamiraxa\n' +
     '***************************************\n'
 
+  console.log({ returnText })
+
   const email = {
     from: gmailEmail,
     to: mail,
-    //bcc: ['monamiraxa.handmade@gmail.com', 'dayabv@gmail.com'],
-    bcc: ['k.yasumi.jug@gmail.com', 'of.importance1109@gmail.com'],
+    bcc: ['monamiraxa.handmade@gmail.com', 'dayabv@gmail.com', 'k.yasumi.jug@gmail.com'],
+    //bcc: ['k.yasumi.jug@gmail.com', 'of.importance1109@gmail.com'],
     subject: '【mon ami raxa】ご注文ありがとうございます（自動配信メール）',
     text: returnText
   }
-  await mailTransport.sendMail(email, async (err, info) => {
+
+  console.log("mail made")
+
+  /* await mailTransport.sendMail(email, async (err, info) => {
     if (err) {
       return console.log(err)
     }
@@ -171,9 +185,27 @@ exports.purchase = functions.https.onCall(async (data, context) => {
     }
 
 
+  }) */
+
+  sgMail.send(email).then(async () => {
+    console.log("mail sent")
+
+    const client = await createClient({ accessToken })
+    const space = await client.getSpace("wb3luzhg5wca")
+    const environment = await space.getEnvironment("master");
+
+    for (var i in cartItems) {
+      await contentUpdate(cartItems[i], environment)
+    }
+
+    return null
+  }).catch((error) => {
+    functions.logger.error("sendMail error");
+    functions.logger.error(JSON.stringify(error));
+    return console.log("Error sending message:", error);
   })
 
-
+  //return null
 
 })
 

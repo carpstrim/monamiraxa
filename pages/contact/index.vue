@@ -22,7 +22,13 @@
         <div>
           <dt>確認のためにもう一度入力してください</dt>
           <dd>
-            <v-text-field v-model="contact.mailConfirm" solo label row-height="15" />
+            <v-text-field
+              v-model="contact.mailConfirm"
+              solo
+              label
+              row-height="15"
+              :rules="[rules]"
+            />
           </dd>
         </div>
 
@@ -68,7 +74,10 @@ export default {
         mailConfirm: '',
         title: '',
         content: ''
-      }
+      },
+      rules: val =>
+        this.contact.mail === val ||
+        '上で入力したメールアドレスと同じものを入力してください'
     }
   },
   computed: {
@@ -78,6 +87,7 @@ export default {
       if (
         this.contact.name &&
         this.contact.mail &&
+        this.contact.mail === this.contact.mailConfirm &&
         this.contact.mailConfirm &&
         this.contact.title &&
         this.contact.content

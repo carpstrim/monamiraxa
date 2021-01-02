@@ -221,10 +221,14 @@
       <p class="mt-8">
         この内容でよろしければ、「申し込みする」ボタンを押してください。
       </p>
-      <v-btn color="amber lighten-3" :loading="loading" @click="purchase()">
+      <v-btn
+        color="amber lighten-3 ml-3 mt-2"
+        :loading="loading"
+        @click="purchase()"
+      >
         申し込みする
       </v-btn>
-      <v-btn class="ml-3" to="/cart/">
+      <v-btn class="ml-3 mt-2" to="/cart/">
         前の画面に戻る
       </v-btn>
     </section>
@@ -233,6 +237,7 @@
 
 <script>
 export default {
+  layout: 'home',
   data () {
     return {
       loading: false,
@@ -246,9 +251,9 @@ export default {
           sortable: false,
           value: 'name'
         },
-        { text: '単価', value: 'price' },
-        { text: '数量', value: 'selected' },
-        { text: '小計', value: 'sum' }
+        { text: '単価', value: 'price', width: 100 },
+        { text: '数量', value: 'selected', width: 100 },
+        { text: '小計', value: 'sum', width: 100 }
       ],
       desserts: [
         {

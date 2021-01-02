@@ -27,7 +27,7 @@
             <div
               v-for="(message, n) in limitMessage"
               :key="'message_' + n"
-              class="itemList ml-3message-wrapper"
+              class="itemList ml-3 message-wrapper"
             >
               <div class="message-side">
                 {{ message.date }}

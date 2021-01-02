@@ -2,9 +2,13 @@
   <v-container color="yellow lighten-5">
     <section>
       <v-container class="pa-0 d-flex flex-column">
-        <h2 class="mt-3 ml-3">
-          {{ currentProduct.name }}
-        </h2>
+        <v-row dense class="mt-2 d-flex justify-center">
+          <v-col cols="12" xs="12" sm="12" md="10" lg="9">
+            <h2 class="mt-3 ml-3">
+              {{ currentProduct.name }}
+            </h2>
+          </v-col>
+        </v-row>
         <v-row dense class="mt-2 d-flex justify-center">
           <v-col cols="12" xs="12" sm="6" md="5" lg="4">
             <v-img

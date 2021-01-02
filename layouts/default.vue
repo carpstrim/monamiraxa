@@ -45,7 +45,7 @@
             :key="i"
             color="#443947"
             :to="item.to"
-            :ripple="item.to==='/#sty' ? false : true"
+            :ripple="item.to === '/#sty' ? false : true"
             @click="closeDrawer()"
           >
             <v-list-item-content>
@@ -72,13 +72,22 @@
         class="header"
         color="transparent"
       >
-        <v-app-bar-nav-icon class="mt-n2" color="grey lighten-1" @click.stop="drawer = !drawer" />
+        <v-app-bar-nav-icon
+          class="mt-n2"
+          color="grey lighten-1"
+          @click.stop="drawer = !drawer"
+        />
       </v-app-bar>
 
-      <v-main style="min-height:100%">
-        <v-container class="pt-0 pb-0" style="max-width:900px">
+      <v-main style="min-height: 100%">
+        <v-container class="pt-0 pb-0" style="max-width: 900px">
           <v-row class="d-flex justify-space-between mr-1 ml-1" no-gutters>
-            <v-col class="d-flex flex-column align-center" cols="1" xs="2" md="1">
+            <v-col
+              class="d-flex flex-column align-center"
+              cols="1"
+              xs="2"
+              md="1"
+            >
               <v-img class="mt-1" height="30" contain :src="instagram">
                 <v-card
                   height="100%"
@@ -91,13 +100,29 @@
               <span class="icon">Instagram</span>
             </v-col>
             <v-col cols="6" xs="6" md="9" />
-            <v-col class="d-flex flex-column align-center" cols="1" xs="3" md="1">
+            <v-col
+              class="d-flex flex-column align-center"
+              cols="1"
+              xs="3"
+              md="1"
+            >
               <v-img height="30" contain :src="cartIcon">
-                <v-card height="100%" flat tile color="transparent" to="/cart" />
+                <v-card
+                  height="100%"
+                  flat
+                  tile
+                  color="transparent"
+                  @click="toCart()"
+                />
               </v-img>
               <span class="icon">カート</span>
             </v-col>
-            <v-col class="d-flex flex-column align-center" cols="1" xs="2" md="1">
+            <v-col
+              class="d-flex flex-column align-center"
+              cols="1"
+              xs="2"
+              md="1"
+            >
               <v-img height="30" contain :src="homeIcon">
                 <v-card height="100%" flat tile color="transparent" to="/" />
               </v-img>
@@ -105,7 +130,7 @@
             </v-col>
           </v-row>
         </v-container>
-        <nuxt style="min-height:85vh" />
+        <nuxt style="min-height: 85vh" />
         <v-footer class="footer d-flex justify-center">
           <v-btn text to="/">
             ホーム
@@ -237,6 +262,9 @@ export default {
   methods: {
     closeDrawer () {
       this.drawer = !this.$vuetify.breakpoint.smAndDown
+    },
+    toCart () {
+      this.$router.push('/cart')
     }
   }
 }
