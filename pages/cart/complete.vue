@@ -40,6 +40,7 @@
 import donguri from '~/assets/img/donguri.png'
 
 export default {
+  layout: 'home',
   data () {
     return { donguri }
   }

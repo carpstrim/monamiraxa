@@ -62,11 +62,9 @@
 
             <p>
               <span class="u-va-top">素材</span>
-              <span>
+              <span style="white-space: pre-line">
                 <ul>
-                  <li class="ml-3" style="white-space: pre-wrap">
-                    {{ currentProduct.material }}
-                  </li>
+                  <li class="ml-3">{{ currentProduct.material }}</li>
                 </ul>
               </span>
             </p>

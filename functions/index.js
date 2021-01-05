@@ -120,7 +120,7 @@ exports.purchase = functions.https.onCall(async (data, context) => {
   const date = now.toISOString().substr(0, 10);
 
   const returnText =
-    `${name}様\n\n※このメールは、ハンドメイドベビーグッズショップ、mon ami raxaでご注文いただきますと自動的に送信されます。` +
+    `${name}様\n\n※このメールは、ハンドメイドベビーグッズショップ、mon ami raxaでご注文いただきますと自動的に送信されます。\n` +
     'このメールに心当たりのない場合や、ご不明な点がございましたら、' +
     'monamiraxa.handmade@gmail.comまでご連絡ください。\n\n\n' +
     'このたびは、ご注文いただき誠にありがとうございます。\n\n' +
@@ -151,8 +151,6 @@ exports.purchase = functions.https.onCall(async (data, context) => {
     `${note}\n\n\n` +
     '***************************************\n' +
     'mon ami raxa（モナミラシャ）\n\n' +
-    '〒664-0846\n' +
-    '兵庫県伊丹市伊丹2丁目1-31-301\n\n' +
     '【E-Mail】 monamiraxa.handmade@gmail.com\n' +
     '【ホームページ】https://monamiraxa.com\n' +
     '【Instagram】ID：monamiraxa\n' +

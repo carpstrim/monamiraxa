@@ -1,6 +1,9 @@
 <template>
   <v-container class="mb-7">
     <section>
+      <h1 class="mb-3">
+        お申込み内容の確認
+      </h1>
       <v-data-table
         :headers="headers"
         :items="cartItems"
@@ -217,7 +220,15 @@
       <h2 v-if="customerInfo.note" class="mt-7">
         備考
       </h2>
-      <p>{{ customerInfo.note }}</p>
+      <v-simple-table style="max-width: 600px">
+        <tbody>
+          <tr>
+            <td :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''">
+              {{ customerInfo.note }}
+            </td>
+          </tr>
+        </tbody>
+      </v-simple-table>
       <p class="mt-8">
         この内容でよろしければ、「申し込みする」ボタンを押してください。
       </p>
