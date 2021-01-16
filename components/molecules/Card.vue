@@ -24,6 +24,5 @@ export default {
 .card {
   padding: 20px;
   //border-radius: $border-radius;
-  border: 1px solid #e4e4e4;
 }
 </style>

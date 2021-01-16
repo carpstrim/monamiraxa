@@ -84,7 +84,7 @@
                   {{ item.name }}
                 </template>
                 <template #price>
-                  {{ item.price }} 円
+                  {{ item.price | num_format }} 円
                   <p
                     v-if="item.stock * 1 <= 0"
                     class="red--text font-weight-bold"
@@ -132,7 +132,7 @@
                   {{ item.name }}
                 </template>
                 <template #price>
-                  {{ item.price }} 円
+                  {{ item.price | num_format }} 円
                   <p
                     v-if="item.stock * 1 <= 0"
                     class="red--text font-weight-bold"
@@ -178,7 +178,7 @@
                   {{ item.name }}
                 </template>
                 <template #price>
-                  {{ item.price }} 円
+                  {{ item.price | num_format }} 円
                   <p
                     v-if="item.stock * 1 <= 0"
                     class="red--text font-weight-bold"
@@ -224,7 +224,7 @@
                   {{ item.name }}
                 </template>
                 <template #price>
-                  {{ item.price }} 円
+                  {{ item.price | num_format }} 円
                   <p
                     v-if="item.stock * 1 <= 0"
                     class="red--text font-weight-bold"
@@ -270,7 +270,7 @@
                   {{ item.name }}
                 </template>
                 <template #price>
-                  {{ item.price }} 円
+                  {{ item.price | num_format }} 円
                   <p
                     v-if="item.stock * 1 <= 0"
                     class="red--text font-weight-bold"
@@ -318,7 +318,7 @@
                   {{ item.name }}
                 </template>
                 <template #price>
-                  {{ item.price }} 円
+                  {{ item.price | num_format }} 円
                   <p
                     v-if="item.stock * 1 <= 0"
                     class="red--text font-weight-bold"
@@ -362,7 +362,7 @@
                   {{ item.name }}
                 </template>
                 <template #price>
-                  {{ item.price }} 円
+                  {{ item.price | num_format }} 円
                   <p
                     v-if="item.stock * 1 <= 0"
                     class="red--text font-weight-bold"
@@ -406,7 +406,7 @@
                   {{ item.name }}
                 </template>
                 <template #price>
-                  {{ item.price }} 円
+                  {{ item.price | num_format }} 円
                   <p
                     v-if="item.stock * 1 <= 0"
                     class="red--text font-weight-bold"
@@ -450,7 +450,7 @@
                   {{ item.name }}
                 </template>
                 <template #price>
-                  {{ item.price }} 円
+                  {{ item.price | num_format }} 円
                   <p
                     v-if="item.stock * 1 <= 0"
                     class="red--text font-weight-bold"
@@ -494,7 +494,7 @@
                   {{ item.name }}
                 </template>
                 <template #price>
-                  {{ item.price }} 円
+                  {{ item.price | num_format }} 円
                   <p
                     v-if="item.stock * 1 <= 0"
                     class="red--text font-weight-bold"
@@ -520,6 +520,11 @@ import donguri from '~/assets/img/donguri.png'
 
 export default {
   layout: 'home',
+  filters: {
+    num_format (num) {
+      return num.toLocaleString()
+    }
+  },
   components: {
     Item
   },

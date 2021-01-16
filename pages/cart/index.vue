@@ -37,7 +37,7 @@
 
         <template v-slot:item.price="{ item }">
           <div :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''">
-            {{ item.price }}円
+            {{ item.price | num_format }}円
           </div>
         </template>
 
@@ -84,7 +84,11 @@
             class="mr-3"
             :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''"
           >
-            {{ item.selected > 0 ? `${item.price * item.selected}円` : "ー" }}
+            {{
+              item.selected > 0
+                ? `${(item.price * item.selected).toLocaleString()}円`
+                : "ー"
+            }}
           </div>
         </template>
 
@@ -99,7 +103,7 @@
               数量が在庫数を超えている商品があります。
             </p>
             <div :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''">
-              <span>商品合計：{{ total }}円</span>
+              <span>商品合計：{{ total | num_format }}円</span>
               <br>
               <span>送料：別途お知らせ</span>
             </div>
@@ -356,6 +360,11 @@
 <script>
 export default {
   layout: 'home',
+  filters: {
+    num_format (num) {
+      return num.toLocaleString()
+    }
+  },
   data () {
     return {
       cartItems: [],
@@ -398,6 +407,7 @@ export default {
           this.customerInfo.shipPostCode &&
           this.customerInfo.shipAddress &&
           this.customerInfo.shipTel &&
+          this.cartItems.length > 0 &&
           !this.notFilled &&
           !this.overStock
 
@@ -413,6 +423,7 @@ export default {
           this.customerInfo.postCode &&
           this.customerInfo.address &&
           this.customerInfo.tel &&
+          this.cartItems.length > 0 &&
           this.isDifferentAbove != null &&
           !this.notFilled &&
           !this.overStock
@@ -448,6 +459,12 @@ export default {
     },
     notFilled () {
       this.$nuxt.refresh()
+    },
+    cartItems: {
+      deep: true,
+      handler (val) {
+        this.$nuxt.refresh()
+      }
     }
   },
   created () {
@@ -457,7 +474,9 @@ export default {
     console.log({ cartItems: this.cartItems })
     console.log({ customerInfo: this.customerInfo })
   },
-  mounted () {},
+  mounted () {
+    this.$nuxt.refresh()
+  },
   methods: {
     itemCount (type, item) {
       if (type === 'up') {

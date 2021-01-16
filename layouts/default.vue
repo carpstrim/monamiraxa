@@ -39,7 +39,7 @@
           </v-list-item>
         </v-list>
         <hr>
-        <v-list>
+        <v-list class="mb-12">
           <v-list-item
             v-for="(item, i) in category"
             :key="i"

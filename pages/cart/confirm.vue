@@ -20,7 +20,7 @@
 
         <template v-slot:item.price="{ item }">
           <div :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''">
-            {{ item.price }}円
+            {{ item.price | num_format }}円
           </div>
         </template>
 
@@ -35,7 +35,11 @@
             class="mr-3"
             :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''"
           >
-            {{ item.selected > 0 ? `${item.price * item.selected}円` : "ー" }}
+            {{
+              item.selected > 0
+                ? `${(item.price * item.selected).toLocaleString()}円`
+                : "ー"
+            }}
           </div>
         </template>
 
@@ -47,7 +51,7 @@
               class="mr-5"
               :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''"
             >
-              <span>商品合計：{{ customerInfo.total }}円</span>
+              <span>商品合計：{{ customerInfo.total | num_format }}円</span>
               <br>
               <span>送料：別途お知らせ</span>
             </div>
@@ -151,7 +155,13 @@
             >
               お名前
             </td>
-            <td :style="$vuetify.breakpoint.mdAndUp ? 'font-size:1rem' : ''">
+            <td
+              :style="
+                $vuetify.breakpoint.mdAndUp
+                  ? 'font-size:1rem'
+                  : 'min-width:200px'
+              "
+            >
               {{ customerInfo.shipName }}
             </td>
           </tr>
@@ -249,11 +259,16 @@
 <script>
 export default {
   layout: 'home',
+  filters: {
+    num_format (num) {
+      return num.toLocaleString()
+    }
+  },
   data () {
     return {
       loading: false,
       cartItems: [],
-      customerInfo: {},
+      customerInfo: { total: 0 },
       products: [],
       headers: [
         {
@@ -344,6 +359,7 @@ export default {
       await call(data).then((res) => {
         console.log({ res })
         this.$cart.renew([])
+        this.$customerInfo.renew([])
         this.$router.push('/cart/complete')
       })
     }

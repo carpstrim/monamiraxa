@@ -102,17 +102,18 @@ exports.purchase = functions.https.onCall(async (data, context) => {
     shipPostCode,
     shipAddress,
     shipTel,
-    total,
-    note
+    total
   } = data.customerInfo
+
+  const note = data.customerInfo.note || "ー"
 
   const cartItems = data.cartItems
 
   const productsText = cartItems.map((p) => {
     return `【　商　　品　　名　】${p.name}\n` +
-      `【　価　格(税込) 】${p.price}円\n` +
+      `【　価　格（税　込）】${p.price.toLocaleString()}円\n` +
       `【　　数　　　量　　】${p.selected}\n` +
-      `【　　小　　　計　　】${p.price * p.selected}円\n` +
+      `【　　小　　　計　　】${(p.price * p.selected).toLocaleString()}円\n` +
       '----------------------------------------'
   }).join('\n')
 
@@ -137,7 +138,6 @@ exports.purchase = functions.https.onCall(async (data, context) => {
     '【　決　済　方　法　】 三菱UFJ銀行へのお振込\n\n' +
     '▼配送先情報\n' +
     `【　お　　名　　前　】 ${shipName} （${shipFurigana}）\n` +
-    `【　メールアドレス　】 ${mail}\n` +
     `【　郵　便　番　号　】 ${shipPostCode}\n` +
     `【　ご　　住　　所　】 ${shipAddress}\n` +
     `【　電　話　番　号　】 ${shipTel}\n\n` +
@@ -146,7 +146,7 @@ exports.purchase = functions.https.onCall(async (data, context) => {
     productsText + '\n\n' +
     '［合計］\n' +
     '【　　送　　　料　　】 後ほどご連絡します\n' +
-    `【　　合　　　計　　】 ${total}円\n\n` +
+    `【　　合　　　計　　】 ${total.toLocaleString()}円\n\n` +
     '［備考］\n' +
     `${note}\n\n\n` +
     '***************************************\n' +

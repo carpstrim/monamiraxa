@@ -70,7 +70,7 @@
             </p>
             <v-divider />
             <span class>価格：</span>
-            <span>{{ currentProduct.price }}円</span>
+            <span>{{ currentProduct.price | num_format }}円</span>
             <br>
             <div v-if="currentProduct.stock > 0">
               <span class>在庫数：</span>
@@ -135,6 +135,11 @@
 import client from '~/plugins/contentful'
 
 export default {
+  filters: {
+    num_format (num) {
+      return num.toLocaleString()
+    }
+  },
   async asyncData ({ query }) {
     const currentProduct = await client
       .getEntries({
